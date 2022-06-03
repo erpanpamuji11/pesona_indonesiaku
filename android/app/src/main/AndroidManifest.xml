@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pesona_indonesiaku_app">
+    package="com.dicoding.pesona_indonesiaku_app">
    <application
         android:label="pesona_indonesiaku_app"
         android:name="${applicationName}"

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home/presentation/HomePage.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:wisata/presentation/home_page.dart';
+import 'package:wisata/presentation/input_page.dart';
 
 class ParentPage extends StatefulWidget {
   static const ROUTE_NAME = '/ParentPage';
@@ -20,7 +21,10 @@ class _ParentPageState extends State<ParentPage> {
   }
 
   final _screen = <Widget>[
-    const HomePage(),
+    HomePage(),
+    InputWisataPage(),
+    InputWisataPage(),
+    InputWisataPage()
   ];
 
   @override
@@ -29,25 +33,25 @@ class _ParentPageState extends State<ParentPage> {
       body: _screen[_currentIndex],
       bottomNavigationBar: SalomonBottomBar(
         selectedItemColor: Colors.lightBlue,
-        unselectedItemColor: Colors.grey ,
+        unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
         onTap: (index) {
-          _currentIndex = index;
-        }, items: [
-        SalomonBottomBarItem(
-          icon: const Icon(Icons.home),
-          title: const Text("Home"),
-        ),
-        SalomonBottomBarItem(
-            icon: const Icon(Icons.search),
-            title: const Text("Home")),
-        SalomonBottomBarItem(
-            icon: const Icon(Icons.star),
-            title: const Text("Home")),
-        SalomonBottomBarItem(
-            icon: const Icon(Icons.person),
-            title: const Text("Home")),
-      ],
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.home),
+            title: const Text("Home"),
+          ),
+          SalomonBottomBarItem(
+              icon: const Icon(Icons.search), title: const Text("Search")),
+          SalomonBottomBarItem(
+              icon: const Icon(Icons.star), title: const Text("Input")),
+          SalomonBottomBarItem(
+              icon: const Icon(Icons.person), title: const Text("Profile")),
+        ],
       ),
     );
   }
