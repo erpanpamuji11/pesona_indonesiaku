@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pesona_indonesiaku_app/common/styles/colors.dart';
 import 'package:pesona_indonesiaku_app/data/database_services.dart';
 import 'package:pesona_indonesiaku_app/presentation/widgets/categorries.dart';
-import 'package:pesona_indonesiaku_app/presentation/wisata/list_wisata_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/homePage';
@@ -106,7 +105,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 print(arrData.length);
                                 return GridView.builder(
                                   gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
                                     mainAxisSpacing: 20.0,
                                     crossAxisSpacing: 20.0,
@@ -122,7 +121,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               height: 400,
                                               decoration: BoxDecoration(
                                                   borderRadius:
-                                                  BorderRadius.circular(10),
+                                                      BorderRadius.circular(10),
                                                   boxShadow: const [
                                                     BoxShadow(
                                                       color: Colors.black12,
@@ -140,10 +139,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               decoration: BoxDecoration(
                                                   color: Colors.white,
                                                   borderRadius:
-                                                  BorderRadius.circular(10.0)),
+                                                      BorderRadius.circular(
+                                                          10.0)),
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Expanded(
                                                     child: Container(
@@ -152,10 +152,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                       decoration: BoxDecoration(
                                                           color: Colors.white,
                                                           borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0)),
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0)),
                                                       child: Image.network(
-                                                        arrData[index]['imgUrl'],
+                                                        arrData[index]
+                                                            ['imgUrl'],
                                                         fit: BoxFit.cover,
                                                         scale: 1.0,
                                                         loadingBuilder: (context,
@@ -167,14 +169,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                           } else {
                                                             return Center(
                                                               child:
-                                                              CircularProgressIndicator(
+                                                                  CircularProgressIndicator(
                                                                 value: loadingProgress
-                                                                    .expectedTotalBytes !=
-                                                                    null
+                                                                            .expectedTotalBytes !=
+                                                                        null
                                                                     ? loadingProgress
-                                                                    .cumulativeBytesLoaded /
-                                                                    loadingProgress
-                                                                        .expectedTotalBytes!
+                                                                            .cumulativeBytesLoaded /
+                                                                        loadingProgress
+                                                                            .expectedTotalBytes!
                                                                     : null,
                                                               ),
                                                             );
@@ -184,21 +186,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                     ),
                                                   ),
                                                   Container(
-                                                    margin: const EdgeInsets.only(
-                                                        left: 10,
-                                                        bottom: 10,
-                                                        top: 2),
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 10,
+                                                            bottom: 10,
+                                                            top: 2),
                                                     child: Column(
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(
-                                                          arrData[index]['name'],
+                                                          arrData[index]
+                                                              ['name'],
                                                           style: const TextStyle(
-                                                              color: Colors.black,
+                                                              color:
+                                                                  Colors.black,
                                                               fontSize: 15,
                                                               fontWeight:
-                                                              FontWeight.bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                         ),
                                                         SizedBox(
                                                           height: 4,
@@ -209,20 +216,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                               Icons
                                                                   .location_on_rounded,
                                                               size: 12,
-                                                              color:
-                                                              Colors.lightBlue,
+                                                              color: Colors
+                                                                  .lightBlue,
                                                             ),
                                                             SizedBox(
                                                               width: 5,
                                                             ),
                                                             Text(
                                                               arrData[index]
-                                                              ['provincy'],
+                                                                  ['provincy'],
                                                               style: const TextStyle(
                                                                   fontSize: 14,
                                                                   fontWeight:
-                                                                  FontWeight
-                                                                      .w300),
+                                                                      FontWeight
+                                                                          .w300),
                                                             )
                                                           ],
                                                         )
@@ -247,9 +254,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 15),
                           child: _buildSubHeading(
-                              title: "Wisata Terbaik",
-                              onTap: () => Navigator.pushNamed(
-                                  context, ListWisataPage.routeName)),
+                              title: "Wisata Terbaik", onTap: () {}),
                         ),
                       ],
                     )
@@ -258,7 +263,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 const SizedBox(
                   height: 10,
                 ),
-                Divider(height: 5, thickness: 5,),
+                Divider(
+                  height: 5,
+                  thickness: 5,
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -268,16 +276,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _buildSub("Majukan Wisata dan UMKM di Indonesia"),
-                      SizedBox(height: 3,),
+                      SizedBox(
+                        height: 3,
+                      ),
                       Container(
                         height: 150,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
                             _cardView(),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             _cardView(),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             _cardView()
                           ],
                         ),
@@ -288,7 +302,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 const SizedBox(
                   height: 10,
                 ),
-                Divider(height: 5, thickness: 5,),
+                Divider(
+                  height: 5,
+                  thickness: 5,
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -304,7 +321,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           scrollDirection: Axis.horizontal,
                           children: [
                             _cardView(),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             _cardView(),
                             _cardView()
                           ],
@@ -327,15 +346,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       children: [
         Text(
           title,
-          style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold
-          ),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         InkWell(
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Lihat Semua', style: TextStyle(fontSize: 15),),
+            child: Text(
+              'Lihat Semua',
+              style: TextStyle(fontSize: 15),
+            ),
           ),
         ),
       ],
@@ -346,21 +366,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Container(
       child: Text(
         title,
-        style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold
-        ),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
-  
-  Container _cardView(){
+
+  Container _cardView() {
     return Container(
       height: 100,
       width: 220,
       decoration: BoxDecoration(
-        color: Colors.lightBlue,
-        borderRadius: BorderRadius.circular(10)
-      ),
+          color: Colors.lightBlue, borderRadius: BorderRadius.circular(10)),
       child: Center(
         child: Text('UMKM'),
       ),

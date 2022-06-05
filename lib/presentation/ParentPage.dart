@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/profile_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/home_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -25,7 +24,7 @@ class _ParentPageState extends State<ParentPage> {
     const HomePage(),
     const InputWisataPage(),
     const InputWisataPage(),
-    const ProfilePage()
+    const InputWisataPage()
   ];
 
   @override
@@ -49,7 +48,7 @@ class _ParentPageState extends State<ParentPage> {
           SalomonBottomBarItem(
               icon: const Icon(Icons.search), title: const Text("Search")),
           SalomonBottomBarItem(
-              icon: const Icon(Icons.star), title: const Text("Input")),
+              icon: const Icon(Icons.star), title: const Text("favorite")),
           SalomonBottomBarItem(
               icon: const Icon(Icons.person), title: const Text("Profile")),
         ],

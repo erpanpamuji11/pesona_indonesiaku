@@ -133,7 +133,9 @@ class _InputWisataPageState extends State<InputWisataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.lightBlue,
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: const Text('Input Wisata'),
       ),
       body: SingleChildScrollView(

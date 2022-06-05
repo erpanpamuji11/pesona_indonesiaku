@@ -40,6 +40,7 @@ dependencies:
   equatable: ^2.0.3
   email_validator: ^2.0.1
   flutter_svg: ^1.0.3
+  ndialog: ^4.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
