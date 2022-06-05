@@ -15,16 +15,7 @@ class BannerUmkm extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                child: Text('paragraf'),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-Permasalahan dan Penghambat UMKM
+                child: Text('Permasalahan dan Penghambat UMKM
 Pada umumnya permasalahan yang dihadapi oleh usaha kecil dan menengah (UKM) antara lain meliputi: (Jafar Hafsah, 2004) 
 a. Faktor Internal
  • Kurangnya permodalan
@@ -53,3 +44,12 @@ Pentingnya Membantu Para UMKM di Indonesia
 	Perekonomian di Indonesia harus tetap berputar dalam situasi dan keadaan apapun, karena jika Perekonomian di Indonesia terhenti maka kehidupan pun tidak akan berjalan. dan UMKM merupakan poros dari Ekonomi Indonesia yang membuat proses Ekonomi tetap berjalan dan hidup dalam situasi dan keadaan apapun, maka para pelaku UMKM harus lah di bantu dalam menghadapi masalah dalam melakukan pengembangan usaha UMKM yang mereka bina.
 Usaha pemerintah dalam menbantu usaha kecil dan menengah dilakukan di dua arah, yaitu yang berkenaan dengan kebijakan fiskal dan kebijakan moneter. Dikebijakan fiskal pemerintah berusaha untuk meningkatkan dan memberikan bantuan kepada usaha kecil dan usaha menengah agar dapat berkembang dengan baik. Proyek Bimbingan Pengembangan Industri Kecil (BIPIK). Dalam hal kebijakan moneter, pemerintah mengembangkan program khusus kredit lunak untuk menunjang pengembangan perusahaan-perusahaan kecil milik pribumi, seperti KIK (Kredit Investasi Kecil) dan KMKP (Kredit Modal Kerja Permanen). Pengawasan usaha- usaha kecil yang telah dan yang dianggap perlu dibantu melalui badanbadan milik negara juga merupakan bagian dari program kebijakan moneter.
 
+'),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
