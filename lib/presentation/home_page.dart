@@ -28,14 +28,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             collapseMode: CollapseMode.pin,
             titlePadding: EdgeInsets.only(left: 20, bottom: 70, right: 30),
             background: Image.asset(
-              "assets/Bali.jpg",
+              "assets/images/Bali.jpg",
               fit: BoxFit.cover,
             ),
             stretchModes: [
               StretchMode.zoomBackground,
             ],
             title: Text(
-              "Discover \nPesona Indonsia",
+              "Discover \nPesona Indonesia",
               style: TextStyle(color: Colors.white, fontSize: 28.0),
             ),
           ),
