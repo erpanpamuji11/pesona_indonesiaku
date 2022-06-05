@@ -2,11 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pesona_indonesiaku_app/presentation/ParentPage.dart';
 import 'package:pesona_indonesiaku_app/presentation/bridge_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/favorite/favorite_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/home_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/login/pages/login_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/login/pages/signup_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/search/search_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/splash_screen.dart';
+import 'package:pesona_indonesiaku_app/presentation/umkm/input_umkm.dart';
 import 'package:pesona_indonesiaku_app/presentation/wisata/detail_wisata_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/wisata/list_wisata_page.dart';
 
 void main() async {
@@ -42,6 +46,14 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const BridgePage());
           case SignUpPage.routeName:
             return MaterialPageRoute(builder: (_) => const SignUpPage());
+          case SearchPage.routeName:
+            return MaterialPageRoute(builder: (_) => SearchPage());
+          case FavoriteApp.routeName:
+            return MaterialPageRoute(builder: (_) => FavoriteApp());
+          case InputWisataPage.routeName:
+            return MaterialPageRoute(builder: (_) => InputWisataPage());
+          case InputUmkmPage.routeName:
+            return MaterialPageRoute(builder: (_) => InputUmkmPage());
         }
         return null;
       },

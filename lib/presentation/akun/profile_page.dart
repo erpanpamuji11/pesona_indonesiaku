@@ -4,6 +4,8 @@ import 'package:pesona_indonesiaku_app/presentation/akun/change_password_page.da
 import 'package:pesona_indonesiaku_app/presentation/akun/edit_profile_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/akun/settings_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/akun/widgets/menu_profile_button.dart';
+import 'package:pesona_indonesiaku_app/presentation/umkm/input_umkm.dart';
+import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
 
 class ProfilePage extends StatefulWidget {
   static const routeName = "/profilePage";
@@ -32,31 +34,120 @@ class _ProfilePageState extends State<ProfilePage> {
           Column(
             children: [
               const SizedBox(height: 20),
-              SizedBox(
-                height: 120,
-                width: 120,
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  fit: StackFit.expand,
-                  children: const [
-                    CircleAvatar(
-                      backgroundImage:
-                          AssetImage('assets/images/fotoProfil.jpg'),
+              Container(
+                margin: EdgeInsets.only(left: 15),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      height: 90,
+                      width: 90,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        fit: StackFit.expand,
+                        children: const [
+                          CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/fotoProfil.jpg'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      user.email!,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
-              Text(
-                user.email!,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
+              Divider(
+                height: 5,
+                thickness: 5,
               ),
               const SizedBox(
+                height: 10,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 15),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                        color: Colors.lightBlue,
+                        width: 1.0,
+                        style: BorderStyle.solid)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        'Jadilah Duta Pariwisata dan UMKM Indonesia',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: Container(
+                              height: 50,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: ElevatedButton(
+                                child: Text('Tambah Data Wisata'),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, InputWisataPage.routeName);
+                                },
+                              )),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Expanded(
+                          child: Container(
+                              height: 50,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                color: Colors.lightGreen,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: ElevatedButton(
+                                child: Text('Tambah Data UMKM'),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, InputUmkmPage.routeName);
+                                },
+                              )),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                height: 5,
+                thickness: 5,
+              ),
+              SizedBox(
                 height: 20,
               ),
               MenuProfileButton(

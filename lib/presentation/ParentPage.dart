@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pesona_indonesiaku_app/presentation/akun/profile_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/favorite/favorite_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/home_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/search/search_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -23,8 +25,8 @@ class _ParentPageState extends State<ParentPage> {
 
   final _screen = <Widget>[
     const HomePage(),
-    const InputWisataPage(),
-    const InputWisataPage(),
+    SearchPage(),
+    const FavoriteApp(),
     const ProfilePage()
   ];
 
@@ -49,7 +51,8 @@ class _ParentPageState extends State<ParentPage> {
           SalomonBottomBarItem(
               icon: const Icon(Icons.search), title: const Text("Search")),
           SalomonBottomBarItem(
-              icon: const Icon(Icons.star), title: const Text("favorite")),
+              icon: const Icon(Icons.favorite_border_outlined),
+              title: const Text("favorite")),
           SalomonBottomBarItem(
               icon: const Icon(Icons.person), title: const Text("Profile")),
         ],

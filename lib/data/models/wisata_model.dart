@@ -17,7 +17,7 @@ class Wisata {
     required this.imgUrl,
   });
 
-  Wisata.fromJson(Map<String, Object> json)
+  Wisata.fromJson(Map<String, dynamic> json)
       : this(
           name: json["name"] as String,
           address: json["address"] as String,
@@ -27,7 +27,7 @@ class Wisata {
           imgUrl: json["imgUrl"] as String,
         );
 
-  Map<String, Object> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       "name": this.name,
       "address": this.address,
