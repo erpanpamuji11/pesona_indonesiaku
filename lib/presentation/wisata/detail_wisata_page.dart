@@ -1,12 +1,17 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pesona_indonesiaku_app/data/database_services.dart';
+import 'package:pesona_indonesiaku_app/data/models/wisata_model.dart';
 
-class DetailWisataPage extends StatelessWidget {
+class DetailWisataPage extends StatefulWidget {
   static const routeName = "/detailWisata";
   const DetailWisataPage({Key? key}) : super(key: key);
 
+  @override
+  State<DetailWisataPage> createState() => _DetailWisataPageState();
+}
+
+class _DetailWisataPageState extends State<DetailWisataPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

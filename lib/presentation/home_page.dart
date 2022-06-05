@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pesona_indonesiaku_app/common/styles/colors.dart';
 import 'package:pesona_indonesiaku_app/data/database_services.dart';
 import 'package:pesona_indonesiaku_app/presentation/widgets/categorries.dart';
+import 'package:pesona_indonesiaku_app/presentation/wisata/list_wisata_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/homePage';
@@ -28,14 +29,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             collapseMode: CollapseMode.pin,
             titlePadding: EdgeInsets.only(left: 20, bottom: 70, right: 30),
             background: Image.asset(
-              "assets/Bali.jpg",
+              "assets/images/Bali.jpg",
               fit: BoxFit.cover,
             ),
             stretchModes: [
               StretchMode.zoomBackground,
             ],
             title: Text(
-              "Discover \nPesona Indonsia",
+              "Discover \nPesona Indonesia",
               style: TextStyle(color: Colors.white, fontSize: 28.0),
             ),
           ),
@@ -254,7 +255,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 15),
                           child: _buildSubHeading(
-                              title: "Wisata Terbaik", onTap: () {}),
+                              title: "Wisata Terbaik",
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, ListWisataPage.routeName);
+                              }),
                         ),
                       ],
                     )

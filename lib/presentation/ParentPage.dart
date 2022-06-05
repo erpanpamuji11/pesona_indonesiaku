@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pesona_indonesiaku_app/presentation/akun/profile_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/home_page.dart';
 import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -24,7 +25,7 @@ class _ParentPageState extends State<ParentPage> {
     const HomePage(),
     const InputWisataPage(),
     const InputWisataPage(),
-    const InputWisataPage()
+    const ProfilePage()
   ];
 
   @override
