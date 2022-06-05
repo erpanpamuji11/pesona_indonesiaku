@@ -22,6 +22,12 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           onPressed: () {
             Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfilePage(),
+              ),
+            );
           },
         ),
         title: const Text(

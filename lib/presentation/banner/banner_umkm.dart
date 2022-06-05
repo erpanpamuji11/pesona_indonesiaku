@@ -11,7 +11,7 @@ class BannerUmkm extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(left: 15, top: 15, right: 15),
+          margin: EdgeInsets.all(15),
           child: Column(
             children: [
               Container(

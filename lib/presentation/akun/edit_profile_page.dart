@@ -25,6 +25,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfilePage(),
+              ),
+            );
           },
           icon: const Icon(
             Icons.arrow_back_outlined,
