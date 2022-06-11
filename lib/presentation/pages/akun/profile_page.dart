@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/change_password_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/edit_profile_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/settings_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/widgets/menu_profile_button.dart';
-import 'package:pesona_indonesiaku_app/presentation/umkm/input_umkm.dart';
-import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/change_password_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/edit_profile_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/settings_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/widgets/menu_profile_button.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/umkm/input_umkm.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/wisata/input_wisata_page.dart';
 
 class ProfilePage extends StatefulWidget {
   static const routeName = "/profilePage";

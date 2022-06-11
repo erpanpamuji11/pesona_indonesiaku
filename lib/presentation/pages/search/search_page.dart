@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pesona_indonesiaku_app/common/styles/colors.dart';
+import 'package:pesona_indonesiaku_app/data/models/wisata_model.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/wisata/detail_page.dart';
 
 class SearchPage extends StatefulWidget {
   static const routeName = "/searchPage";
@@ -79,7 +81,6 @@ class _SearchPageState extends State<SearchPage> {
                           child: Text("Loading"),
                         );
                       }
-
                       return ListView(
                         children: snapshot.data!.docs
                             .map((DocumentSnapshot document) {
@@ -98,7 +99,9 @@ class _SearchPageState extends State<SearchPage> {
                                   color: Colors.transparent,
                                   borderRadius: BorderRadius.circular(10.0),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pushNamed(context, DetailPage.routeName, arguments: Wisata(name: data['name'], address: data['address'], provincy: data['provincy'], category: data['category'], description: data['description'], imgUrl: data['imgUrl']));
+                                    },
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -146,6 +149,10 @@ class _SearchPageState extends State<SearchPage> {
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
+                                              ),
+                                              IconInfo(
+                                                text: data['category'],
+                                                icon: Icons.category_outlined,
                                               ),
                                             ],
                                           ),

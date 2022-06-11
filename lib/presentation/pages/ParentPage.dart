@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/profile_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/favorite/favorite_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/home_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/search/search_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/wisata/input_wisata_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/profile_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/favorite/favorite_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/home_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/search/search_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/wishlist/wishlist_page.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class ParentPage extends StatefulWidget {
@@ -26,7 +26,7 @@ class _ParentPageState extends State<ParentPage> {
   final _screen = <Widget>[
     const HomePage(),
     SearchPage(),
-    const FavoriteApp(),
+    const WishlistPage(),
     const ProfilePage()
   ];
 

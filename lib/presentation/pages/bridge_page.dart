@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pesona_indonesiaku_app/presentation/ParentPage.dart';
-import 'package:pesona_indonesiaku_app/presentation/login/pages/login_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/ParentPage.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/login/pages/login_page.dart';
 
 class BridgePage extends StatelessWidget {
   static const routeName = "/bridgePage";

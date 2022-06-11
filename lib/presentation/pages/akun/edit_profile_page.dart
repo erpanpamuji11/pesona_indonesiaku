@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/profile_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/widgets/button_page_profile.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/widgets/form_edit_profile.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/profile_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/widgets/button_page_profile.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/widgets/form_edit_profile.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);

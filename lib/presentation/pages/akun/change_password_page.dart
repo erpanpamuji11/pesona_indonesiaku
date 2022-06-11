@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/profile_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/akun/widgets/button_page_profile.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/profile_page.dart';
+import 'package:pesona_indonesiaku_app/presentation/pages/akun/widgets/button_page_profile.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({Key? key}) : super(key: key);

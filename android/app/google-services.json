@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "472609220713",
-    "project_id": "pesona-indonesiakuapp",
-    "storage_bucket": "pesona-indonesiakuapp.appspot.com"
+    "project_number": "621918122829",
+    "project_id": "pesona-indonesiaku",
+    "storage_bucket": "pesona-indonesiaku.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:472609220713:android:fba4221472f46a3d02daf8",
+        "mobilesdk_app_id": "1:621918122829:android:4ba309fae16fbb0229bd04",
         "android_client_info": {
           "package_name": "com.dicoding.pesona_indonesiaku_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "472609220713-6hop07etcvb3o0562ba4av8o7b4plmlv.apps.googleusercontent.com",
+          "client_id": "621918122829-ou7ejofiov1vpccauv57uu9909iogcld.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDUPfL5b0GcFDSg2ylfw5Zlu1hCeAubR08"
+          "current_key": "AIzaSyC7bRSuY46R9f9js-8SRxsnYTtWH1edwyg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "472609220713-6hop07etcvb3o0562ba4av8o7b4plmlv.apps.googleusercontent.com",
+              "client_id": "621918122829-ou7ejofiov1vpccauv57uu9909iogcld.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
