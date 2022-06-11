@@ -1,21 +1,21 @@
+import 'package:authentication/presentation/pages/login_page.dart';
+import 'package:authentication/presentation/pages/signup_page.dart';
+import 'package:core/data/models/wisata_model.dart';
+import 'package:core/data/repository/wisata_repository.dart';
+import 'package:core/presentation/pages/ParentPage.dart';
+import 'package:core/presentation/pages/bridge_page.dart';
+import 'package:core/presentation/pages/home_page.dart';
+import 'package:core/presentation/pages/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pesona_indonesiaku_app/data/models/wisata_model.dart';
-import 'package:pesona_indonesiaku_app/data/repository/wisata_repository.dart';
-import 'package:pesona_indonesiaku_app/presentation/bloc/wisata/wisata_bloc.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/ParentPage.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/bridge_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/favorite/favorite_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/home_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/login/pages/login_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/login/pages/signup_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/search/search_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/splash_screen.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/umkm/input_umkm.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/wisata/detail_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/wisata/input_wisata_page.dart';
-import 'package:pesona_indonesiaku_app/presentation/pages/wisata/list_wisata_page.dart';
+import 'package:search/presentation/pages/search_page.dart';
+import 'package:umkm/presentation/pages/input_umkm.dart';
+import 'package:wisata/presentation/bloc/wisata_bloc.dart';
+import 'package:wisata/presentation/pages/detail_page.dart';
+import 'package:wisata/presentation/pages/input_wisata_page.dart';
+import 'package:wisata/presentation/pages/list_wisata_page.dart';
+import 'package:wishlist/presentation/pages/wishlist_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,12 +59,12 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(builder: (_) => const SignUpPage());
               case SearchPage.routeName:
                 return MaterialPageRoute(builder: (_) => SearchPage());
-              case FavoriteApp.routeName:
-                return MaterialPageRoute(builder: (_) => FavoriteApp());
+              case WishlistPage.routeName:
+                return MaterialPageRoute(builder: (_) => const WishlistPage());
               case InputWisataPage.routeName:
-                return MaterialPageRoute(builder: (_) => InputWisataPage());
+                return MaterialPageRoute(builder: (_) => const InputWisataPage());
               case InputUmkmPage.routeName:
-                return MaterialPageRoute(builder: (_) => InputUmkmPage());
+                return MaterialPageRoute(builder: (_) => const InputUmkmPage());
             }
             return null;
           },

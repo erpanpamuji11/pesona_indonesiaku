@@ -50,6 +50,20 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  #modular
+  core:
+    path: core
+  wisata:
+    path: wisata
+  umkm:
+    path: umkm
+  wishlist:
+    path: wishlist
+  search:
+    path: search
+  authentication:
+    path: authentication
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
