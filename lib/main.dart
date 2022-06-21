@@ -3,8 +3,10 @@ import 'package:authentication/presentation/pages/signup_page.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/data/repository/wisata_repository.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
+import 'package:core/presentation/pages/akun/profile_page.dart';
 import 'package:core/presentation/pages/bridge_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
+import 'package:core/presentation/pages/pick_wisata.dart';
 import 'package:core/presentation/pages/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +67,12 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(
                     builder: (_) => const InputWisataPage());
               case InputUmkmPage.routeName:
-                return MaterialPageRoute(builder: (_) => const InputUmkmPage());
+                return InputUmkmPage.route(
+                    wisata: settings.arguments as Wisata);
+              case ProfilePage.routeName:
+                return MaterialPageRoute(builder: (_) => const ProfilePage());
+              case PickWisata.routeName:
+                return MaterialPageRoute(builder: (_) => PickWisata());
             }
             return null;
           },

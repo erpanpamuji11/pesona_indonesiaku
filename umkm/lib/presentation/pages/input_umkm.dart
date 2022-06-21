@@ -1,12 +1,24 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:core/data/models/wisata_model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class InputUmkmPage extends StatefulWidget {
   static const routeName = '/InputUMKM';
-  const InputUmkmPage({Key? key}) : super(key: key);
+  final Wisata wisata;
+  const InputUmkmPage({Key? key, required this.wisata}) : super(key: key);
+  static Route route({required Wisata wisata}) {
+    return MaterialPageRoute(
+      // ignore: prefer_const_constructors
+      settings: RouteSettings(name: routeName),
+      // ignore: prefer_const_constructors
+      builder: (_) => InputUmkmPage(
+        wisata: wisata,
+      ),
+    );
+  }
 
   @override
   State<InputUmkmPage> createState() => _InputUmkmPageState();
@@ -54,7 +66,7 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
     String uploadFileName =
         DateTime.now().millisecondsSinceEpoch.toString() + '.jpg';
     Reference reference =
-        storageRef.ref().child(collectionName).child(uploadFileName);
+    storageRef.ref().child(collectionName).child(uploadFileName);
     UploadTask uploadTask = reference.putFile(File(imagePath!.path));
     uploadTask.snapshotEvents.listen((event) {
       print(event.totalBytes.toString() +
@@ -67,13 +79,18 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
 
       //now here will insert record inside database regard url
       if (uploadPath.isNotEmpty) {
-        firestoreRef.collection(collectionName).doc(uniqueKey.id).set({
+        firestoreRef
+            .collection(collectionName)
+            .doc(widget.wisata.name)
+            .collection('umkm-wisata')
+            .doc()
+            .set({
           'name': nameController.text,
           'address': addressController.text,
           'category': _selectedCategory,
           'description': deskripsiController.text,
           'imgUrl': uploadPath
-        }).then((value) => _showMessage("Wisata baru berhasil ditambahkan"));
+        }).then((value) => _showMessage("UMKM baru berhasil ditambahkan"));
       } else {
         _showMessage("Something while uploading image");
       }
@@ -106,64 +123,144 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
       body: SingleChildScrollView(
         child: _isLoading
             ? Container(
-                margin: const EdgeInsets.only(top: 20),
-                child: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
+          margin: const EdgeInsets.only(top: 20),
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        )
             : Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+          child: Column(
+            children: [
+              Container(
+                width: double.maxFinite,
                 child: Column(
                   children: [
-                    _buildTextField(
-                        nameController, "Nama UMKM", "Masukan Nama UMKM"),
-                    const SizedBox(height: 10),
-                    _buildTextField(addressController, "Alamat Lengkap",
-                        "Masukan Alamat Lengkap"),
-                    const SizedBox(height: 10),
-                    _buildTextField(addressController, "Deskripsi Singkat",
-                        "Tuliskan Deskripsi Singkat Mengenai Wisata Anda"),
-                    const SizedBox(height: 10),
-                    _buildDropDownCategory(),
-                    const SizedBox(height: 20),
-                    InkWell(
-                      onTap: () => imagePicker(),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
                       child: Container(
-                        width: double.maxFinite,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.blue),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              Icons.upload_file,
-                              color: Colors.grey,
-                            ),
-                            Text(
-                              'Upload Foto',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: ElevatedButton(
-                          autofocus: true,
-                          child: const Text(
-                            'Simpan UMKM',
-                            style: TextStyle(color: Colors.white),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          onPressed: () {}),
+                          margin: const EdgeInsets.all(10.0),
+                          child: Material(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.circular(10),
+                                      color: Colors.grey),
+                                  child: ClipRRect(
+                                      borderRadius:
+                                      BorderRadius.circular(10.0),
+                                      child: Image.network(
+                                        widget.wisata.imgUrl,
+                                        width: 120.0,
+                                        height: 120.0,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (context, url,
+                                            error) =>
+                                        const Text(
+                                            'Failed load image'),
+                                      )),
+                                ),
+                                const SizedBox(width: 10.0),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        widget.wisata.name,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      IconInfo(
+                                        text: widget.wisata.provincy,
+                                        icon: Icons.location_on_rounded,
+                                      ),
+                                      const SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      IconInfo(
+                                        text: widget.wisata.category,
+                                        icon: Icons.category_outlined,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
                     )
                   ],
                 ),
               ),
+              const SizedBox(height: 10),
+              _buildTextField(
+                  nameController, "Nama UMKM", "Masukan Nama UMKM"),
+              const SizedBox(height: 10),
+              _buildTextField(addressController, "Alamat Lengkap",
+                  "Masukan Alamat Lengkap"),
+              const SizedBox(height: 10),
+              _buildTextField(deskripsiController, "Deskripsi Singkat",
+                  "Tuliskan Deskripsi Singkat Mengenai Wisata Anda"),
+              const SizedBox(height: 10),
+              _buildDropDownCategory(),
+              const SizedBox(height: 20),
+              InkWell(
+                onTap: () => imagePicker(),
+                child: Container(
+                  width: double.maxFinite,
+                  height: 80,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.upload_file,
+                        color: Colors.grey,
+                      ),
+                      Text(
+                        'Upload Foto',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                    autofocus: true,
+                    child: const Text(
+                      'Simpan UMKM',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      _uploadImage();
+                    }),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -248,6 +345,33 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
             // prefix: Icon(icon),
             border: InputBorder.none),
       ),
+    );
+  }
+}
+
+class IconInfo extends StatelessWidget {
+  final String text;
+  final IconData? icon;
+  const IconInfo({Key? key, required this.text, this.icon}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(
+          icon,
+          size: 16,
+          color: Colors.lightGreen,
+        ),
+        const SizedBox(
+          width: 3.0,
+        ),
+        SizedBox(
+          width: 160,
+          child: Text(text),
+        )
+      ],
     );
   }
 }

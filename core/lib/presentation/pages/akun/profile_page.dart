@@ -2,6 +2,7 @@ import 'package:core/presentation/pages/akun/change_password_page.dart';
 import 'package:core/presentation/pages/akun/edit_profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/akun/widgets/menu_profile_button.dart';
+import 'package:core/presentation/pages/pick_wisata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:umkm/presentation/pages/input_umkm.dart';
@@ -131,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: Text('Tambah Data UMKM'),
                                 onPressed: () {
                                   Navigator.pushNamed(
-                                      context, InputUmkmPage.routeName);
+                                      context, PickWisata.routeName);
                                 },
                               )),
                         ),

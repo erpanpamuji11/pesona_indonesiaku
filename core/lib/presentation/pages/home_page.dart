@@ -51,11 +51,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             title: Row(
               children: [
                 Expanded(
-                  child: SizedBox(
-                    height: 50,
-                    child: GestureDetector(
-                      onTap: () =>
-                          Navigator.pushNamed(context, SearchPage.routeName),
+                  child: GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, SearchPage.routeName),
+                    child: SizedBox(
+                      height: 50,
                       child: TextField(
                         cursorColor: kDavysGrey,
                         decoration: InputDecoration(
