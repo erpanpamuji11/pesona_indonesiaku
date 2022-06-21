@@ -62,7 +62,8 @@ class MyApp extends StatelessWidget {
               case WishlistPage.routeName:
                 return MaterialPageRoute(builder: (_) => const WishlistPage());
               case InputWisataPage.routeName:
-                return MaterialPageRoute(builder: (_) => const InputWisataPage());
+                return MaterialPageRoute(
+                    builder: (_) => const InputWisataPage());
               case InputUmkmPage.routeName:
                 return MaterialPageRoute(builder: (_) => const InputUmkmPage());
             }

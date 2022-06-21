@@ -3,6 +3,7 @@ import 'package:core/presentation/pages/ParentPage.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUpPage extends StatefulWidget {
   static const routeName = '/SignUpPage';
@@ -18,17 +19,26 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
 
   Future signUp() async {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => Center(
-              child: CircularProgressIndicator(),
-            ));
-
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text, password: _passwordController.text);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
+      var authCredential = userCredential.user;
+      print(authCredential!.uid);
+      if (authCredential.uid.isNotEmpty) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ParentPage()));
+      } else {
+        Fluttertoast.showToast(msg: "Something is wrong");
+      }
     } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Fluttertoast.showToast(msg: "The password provided is too weak.");
+      } else if (e.code == 'email-already-in-use') {
+        Fluttertoast.showToast(
+            msg: "The account already exists for that email.");
+      }
+    } catch (e) {
       print(e);
     }
 

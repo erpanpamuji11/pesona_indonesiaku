@@ -19,12 +19,12 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => Center(
-              child: CircularProgressIndicator(),
-            ));
+    // showDialog(
+    //     context: context,
+    //     barrierDismissible: false,
+    //     builder: (context) => Center(
+    //           child: CircularProgressIndicator(),
+    //         ));
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
