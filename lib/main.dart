@@ -1,5 +1,7 @@
 import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:authentication/presentation/pages/signup_page.dart';
+import 'package:core/common/styles/text_styles.dart';
+import 'package:core/data/models/umkm_model.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/data/repository/wisata_repository.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
@@ -12,6 +14,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/presentation/pages/search_page.dart';
+import 'package:umkm/presentation/pages/detail_umkm_page.dart';
 import 'package:umkm/presentation/pages/input_umkm.dart';
 import 'package:wisata/presentation/bloc/wisata_bloc.dart';
 import 'package:wisata/presentation/pages/detail_page.dart';
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           navigatorKey: navigatorKey,
           title: "Pesona Indonesiaku",
+          theme: ThemeData.light(),
           home: const SplashScreen(),
           onGenerateRoute: (RouteSettings settings) {
             switch (settings.name) {
@@ -73,6 +77,8 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(builder: (_) => const ProfilePage());
               case PickWisata.routeName:
                 return MaterialPageRoute(builder: (_) => PickWisata());
+              case DetailUmkmPage.routeName:
+                return DetailUmkmPage.route(umkm: settings.arguments as Umkm);
             }
             return null;
           },

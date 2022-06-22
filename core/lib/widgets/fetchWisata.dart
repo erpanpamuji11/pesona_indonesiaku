@@ -98,6 +98,7 @@ Widget fetchWisata(String collectionName) {
                   height: 120.0,
                   child: GestureDetector(
                     child: CircleAvatar(
+                      backgroundColor: Colors.black12,
                       child: Icon(
                         Icons.remove_circle_outline_outlined,
                         color: Colors.red,

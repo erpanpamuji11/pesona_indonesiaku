@@ -17,12 +17,28 @@ class _PickWisataState extends State<PickWisata> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.lightBlue,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              'Pilih Wisata Mana UMKM-mu berada',
+              style: TextStyle(
+                  fontSize: 26,
+                  color: Colors.lightBlue,
+                  fontWeight: FontWeight.bold),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -127,34 +143,37 @@ class _PickWisataState extends State<PickWisata> {
                                               )),
                                         ),
                                         const SizedBox(width: 10.0),
-                                        Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                data['name'],
-                                                style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                              const SizedBox(
-                                                height: 5.0,
-                                              ),
-                                              IconInfo(
-                                                text: data['provincy'],
-                                                icon: Icons.location_on_rounded,
-                                              ),
-                                              const SizedBox(
-                                                height: 5.0,
-                                              ),
-                                              IconInfo(
-                                                text: data['category'],
-                                                icon: Icons.category_outlined,
-                                              ),
-                                            ],
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  data['name'],
+                                                  style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                const SizedBox(
+                                                  height: 5.0,
+                                                ),
+                                                IconInfo(
+                                                  text: data['provincy'],
+                                                  icon:
+                                                      Icons.location_on_rounded,
+                                                ),
+                                                const SizedBox(
+                                                  height: 5.0,
+                                                ),
+                                                IconInfo(
+                                                  text: data['category'],
+                                                  icon: Icons.category_outlined,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         )
                                       ],

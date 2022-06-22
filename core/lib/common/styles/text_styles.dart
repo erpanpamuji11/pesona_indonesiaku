@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // text style
+final TextStyle textApp = GoogleFonts.signika();
 final TextStyle kHeading5 =
-    GoogleFonts.oxygen(fontSize: 23, fontWeight: FontWeight.w400);
-final TextStyle kHeading6 = GoogleFonts.oxygen(
+    GoogleFonts.signika(fontSize: 23, fontWeight: FontWeight.w400);
+final TextStyle kHeading6 = GoogleFonts.signika(
     fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15);
-final TextStyle kSubtitle = GoogleFonts.oxygen(
+final TextStyle kSubtitle = GoogleFonts.signika(
     fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.15);
-final TextStyle kBodyText = GoogleFonts.oxygen(
+final TextStyle kBodyText = GoogleFonts.signika(
     fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.25);
 
 // text theme

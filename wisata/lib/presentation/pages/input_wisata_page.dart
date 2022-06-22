@@ -59,7 +59,13 @@ class _InputWisataPageState extends State<InputWisataPage> {
   String _selectedProvincy = 'Jawa Tengah';
 
   //Kategori
-  final List<String> _category = ["Alam", "Budaya", "Edukasi", "Sport"];
+  final List<String> _category = [
+    "Alam",
+    "Budaya",
+    "Edukasi",
+    "Sport",
+    "Religi"
+  ];
   String _selectedCategory = "Alam";
 
   String imageName = '';

@@ -125,8 +125,8 @@ class _SearchPageState extends State<SearchPage> {
                                                   BorderRadius.circular(10.0),
                                               child: Image.network(
                                                 data['imgUrl'],
-                                                width: 120.0,
-                                                height: 120.0,
+                                                width: 100.0,
+                                                height: 100.0,
                                                 fit: BoxFit.cover,
                                                 errorBuilder: (context, url,
                                                         error) =>
@@ -135,34 +135,37 @@ class _SearchPageState extends State<SearchPage> {
                                               )),
                                         ),
                                         const SizedBox(width: 10.0),
-                                        Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                data['name'],
-                                                style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                              const SizedBox(
-                                                height: 5.0,
-                                              ),
-                                              IconInfo(
-                                                text: data['provincy'],
-                                                icon: Icons.location_on_rounded,
-                                              ),
-                                              const SizedBox(
-                                                height: 5.0,
-                                              ),
-                                              IconInfo(
-                                                text: data['category'],
-                                                icon: Icons.category_outlined,
-                                              ),
-                                            ],
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  data['name'],
+                                                  style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                const SizedBox(
+                                                  height: 5.0,
+                                                ),
+                                                IconInfo(
+                                                  text: data['provincy'],
+                                                  icon:
+                                                      Icons.location_on_rounded,
+                                                ),
+                                                const SizedBox(
+                                                  height: 5.0,
+                                                ),
+                                                IconInfo(
+                                                  text: data['category'],
+                                                  icon: Icons.category_outlined,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         )
                                       ],
