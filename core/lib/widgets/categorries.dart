@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wisata/presentation/pages/list_wisata_by_category.dart';
+import 'package:wisata/presentation/pages/list_wisata_page.dart';
 
 // We need satefull widget for our categories
 
@@ -10,56 +12,135 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  List<String> categories = ["Semua", "Alam", "Budaya", "Edukasi", "Religi"];
-  // By default our first item will be selected
-  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: SizedBox(
-        height: 30,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: categories.length,
-          itemBuilder: (context, index) => buildCategory(index),
-        ),
-      ),
-    );
-  }
-
-  Widget buildCategory(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.only(top: 5, bottom: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             Container(
-              decoration: BoxDecoration(
-                  color:
-                      selectedIndex == index ? Colors.white : Colors.lightBlue,
-                  border: Border.all(
-                      color: Colors.lightBlue,
-                      width: 2.0,
-                      style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(20)),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+              margin: EdgeInsets.only(left: 15),
               child: Text(
-                categories[index],
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      selectedIndex == index ? Colors.lightBlue : Colors.white,
-                ),
+                "Kategori Wisata",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+                height: 60,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      width: 15,
+                    ),
+                    _buildCategory(
+                        Icon(
+                          Icons.nature,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        'Alam',
+                        'Alam'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    _buildCategory(
+                        Icon(
+                          Icons.mosque,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        'Religi',
+                        'Religi'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    _buildCategory(
+                        Icon(
+                          Icons.holiday_village_outlined,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        'Budaya',
+                        'Budaya'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    _buildCategory(
+                        Icon(
+                          Icons.sports,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        'Sports',
+                        'Sport'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    _buildCategory(
+                        Icon(
+                          Icons.cast_for_education,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        'Edukasi',
+                        'Edukasi'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    _buildCategory(
+                        Icon(
+                          Icons.apple,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        'Botani',
+                        'Botani'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                  ],
+                )),
+          ],
+        ));
+  }
+
+  Widget _buildCategory(
+      Icon iconButton, String textButton, String categoryWisata) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ListWisataByCategoryPage(
+                    categoryName: categoryWisata,
+                  )),
+        );
+      },
+      child: Container(
+        height: 60.0,
+        width: 60.0,
+        padding: EdgeInsets.all(5.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10), color: Colors.lightBlue),
+        child: Column(
+          children: [
+            Center(
+              child: iconButton,
+            ),
+            Center(
+              child: Text(
+                textButton,
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+            )
           ],
         ),
       ),

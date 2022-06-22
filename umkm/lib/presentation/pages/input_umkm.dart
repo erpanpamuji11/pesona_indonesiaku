@@ -37,7 +37,8 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
     "Kerajinan",
     "Olah Raga",
     "Souvenir",
-    "Jasa"
+    "Jasa",
+    "Botani"
   ];
   String _selectedCategory = "Kuliner";
 
