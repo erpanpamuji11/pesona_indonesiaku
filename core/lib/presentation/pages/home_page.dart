@@ -110,6 +110,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     options: CarouselOptions(
                                         aspectRatio: 1.5,
                                         viewportFraction: 0.9,
+                                        autoPlay: true,
+                                        autoPlayInterval: Duration(seconds: 6),
+                                        autoPlayAnimationDuration:
+                                            Duration(milliseconds: 900),
+                                        autoPlayCurve: Curves.fastOutSlowIn,
                                         enlargeCenterPage: true,
                                         enlargeStrategy:
                                             CenterPageEnlargeStrategy.height,

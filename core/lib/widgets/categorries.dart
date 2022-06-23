@@ -41,7 +41,7 @@ class _CategoriesState extends State<Categories> {
                         Icon(
                           Icons.nature,
                           color: Colors.white,
-                          size: 30,
+                          size: 32,
                         ),
                         'Alam',
                         'Alam'),
@@ -52,7 +52,7 @@ class _CategoriesState extends State<Categories> {
                         Icon(
                           Icons.mosque,
                           color: Colors.white,
-                          size: 30,
+                          size: 32,
                         ),
                         'Religi',
                         'Religi'),
@@ -63,7 +63,7 @@ class _CategoriesState extends State<Categories> {
                         Icon(
                           Icons.holiday_village_outlined,
                           color: Colors.white,
-                          size: 30,
+                          size: 32,
                         ),
                         'Budaya',
                         'Budaya'),
@@ -74,7 +74,7 @@ class _CategoriesState extends State<Categories> {
                         Icon(
                           Icons.sports,
                           color: Colors.white,
-                          size: 30,
+                          size: 32,
                         ),
                         'Sports',
                         'Sport'),
@@ -85,7 +85,7 @@ class _CategoriesState extends State<Categories> {
                         Icon(
                           Icons.cast_for_education,
                           color: Colors.white,
-                          size: 30,
+                          size: 32,
                         ),
                         'Edukasi',
                         'Edukasi'),
@@ -96,7 +96,7 @@ class _CategoriesState extends State<Categories> {
                         Icon(
                           Icons.apple,
                           color: Colors.white,
-                          size: 30,
+                          size: 32,
                         ),
                         'Botani',
                         'Botani'),
@@ -136,7 +136,7 @@ class _CategoriesState extends State<Categories> {
               child: Text(
                 textButton,
                 style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),

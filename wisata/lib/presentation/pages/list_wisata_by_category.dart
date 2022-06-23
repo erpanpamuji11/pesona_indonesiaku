@@ -17,7 +17,7 @@ class ListWisataByCategoryPage extends StatelessWidget {
           backgroundColor: Colors.white,
           foregroundColor: Colors.lightBlue,
           elevation: 0,
-          title: const Text("Wisata Favoritmu"),
+          title: Text("Wisata ${categoryName}"),
         ),
         body: Container(
             margin: const EdgeInsets.all(15),

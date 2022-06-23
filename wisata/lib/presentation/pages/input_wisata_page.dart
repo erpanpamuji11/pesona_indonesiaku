@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:core/widgets/mytextfield.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _InputWisataPageState extends State<InputWisataPage> {
     "Gorontal",
     "Sulawesi Tenga",
     "Sulawesi Barat",
-    "Provinsi Sulawesi Selatan",
+    "Sulawesi Selatan",
     "Sulawesi Tenggara",
     "Maluku",
     "Maluku Utara",
@@ -156,10 +157,10 @@ class _InputWisataPageState extends State<InputWisataPage> {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                 child: Column(
                   children: [
-                    _buildTextField(
+                    buildTextField(
                         nameController, "Nama Wisata", "Masukan Nama Wisata"),
                     const SizedBox(height: 10),
-                    _buildTextField(addressController, "Alamat Lengkap",
+                    buildTextField(addressController, "Alamat Lengkap",
                         "Masukan Alamat Lengkap"),
                     const SizedBox(height: 10),
                     _buildDropDownprovincy(),
@@ -177,7 +178,7 @@ class _InputWisataPageState extends State<InputWisataPage> {
                         width: double.maxFinite,
                         height: 80,
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.blue),
+                            border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -215,40 +216,11 @@ class _InputWisataPageState extends State<InputWisataPage> {
     );
   }
 
-  _buildTextField(
-      TextEditingController controller, String labelText, String hintText) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
-          borderRadius: BorderRadius.circular(10)),
-      child: TextFormField(
-        controller: controller,
-        style: const TextStyle(color: Colors.black, fontSize: 17),
-        validator: (value) {
-          if (value!.isEmpty) {
-            return "it is empty";
-          } else {
-            return null;
-          }
-        },
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
-            labelText: labelText,
-            hintText: hintText,
-            hintStyle: const TextStyle(fontSize: 17),
-            labelStyle: const TextStyle(color: Colors.grey),
-            // prefix: Icon(icon),
-            border: InputBorder.none),
-      ),
-    );
-  }
-
   _buildDropDownprovincy() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
+          border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
@@ -279,7 +251,7 @@ class _InputWisataPageState extends State<InputWisataPage> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
+          border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
@@ -309,22 +281,18 @@ class _InputWisataPageState extends State<InputWisataPage> {
   _buildTextFieldParagraf(
       TextEditingController controller, String labelText, String hintText) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
-          borderRadius: BorderRadius.circular(10)),
       child: TextField(
         maxLines: 5,
         controller: controller,
         style: const TextStyle(color: Colors.black, fontSize: 17),
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            contentPadding: const EdgeInsets.all(10),
             labelText: labelText,
             hintText: hintText,
             hintStyle: const TextStyle(fontSize: 17),
             labelStyle: const TextStyle(color: Colors.grey),
             // prefix: Icon(icon),
-            border: InputBorder.none),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
       ),
     );
   }
