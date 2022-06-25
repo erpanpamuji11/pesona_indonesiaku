@@ -1,3 +1,5 @@
+import 'package:authentication/presentation/pages/login_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/presentation/pages/akun/change_password_page.dart';
 import 'package:core/presentation/pages/akun/edit_profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
@@ -23,6 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         foregroundColor: Colors.lightBlue,
         elevation: 0,
@@ -35,37 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Column(
             children: [
               const SizedBox(height: 20),
-              Container(
-                margin: EdgeInsets.only(left: 15),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 90,
-                      width: 90,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        fit: StackFit.expand,
-                        children: const [
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/fotoProfil.jpg'),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      user.email!,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              profileCard(),
               const SizedBox(
                 height: 20,
               ),
@@ -199,12 +172,87 @@ class _ProfilePageState extends State<ProfilePage> {
               MenuProfileButton(
                 iconButton: 'assets/icons/Logout.svg',
                 textButton: 'Keluar',
-                pressButton: () => FirebaseAuth.instance.signOut(),
+                pressButton: () => FirebaseAuth.instance.signOut().then(
+                    (value) =>
+                        Navigator.pushNamed(context, LoginPage.routeName)),
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  Widget profileCard() {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance
+          .collection('users-form-data')
+          .doc(currentUser!.email)
+          .snapshots(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var data = snapshot.data;
+        if (data == null) {
+          return Container(
+            margin: EdgeInsets.only(left: 15),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  '',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  '',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+        return Container(
+          margin: EdgeInsets.only(left: 15),
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hai ${data['nickName']}!',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    '${currentUser.email}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

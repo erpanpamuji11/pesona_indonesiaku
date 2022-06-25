@@ -1,9 +1,9 @@
 import 'package:authentication/presentation/pages/signup_page.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
 import 'package:core/presentation/pages/home_page.dart';
-import 'package:core/presentation/pages/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = '/loginPage';
@@ -19,17 +19,32 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    // showDialog(
-    //     context: context,
-    //     barrierDismissible: false,
-    //     builder: (context) => Center(
-    //           child: CircularProgressIndicator(),
-    //         ));
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => Center(
+              child: CircularProgressIndicator(),
+            ));
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text, password: _passwordController.text);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _emailController.text.trim(),
+              password: _passwordController.text.trim());
+      var authCredential = userCredential.user;
+      print(authCredential!.uid);
+      if (authCredential.uid.isNotEmpty) {
+        Navigator.pushNamed(context, ParentPage.ROUTE_NAME);
+      } else {
+        Fluttertoast.showToast(msg: "Something is wrong");
+      }
     } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Fluttertoast.showToast(msg: "No user found for that email.");
+      } else if (e.code == 'wrong-password') {
+        Fluttertoast.showToast(msg: "Wrong password provided for that user.");
+      }
+    } catch (e) {
       print(e);
     }
 
@@ -58,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 Image.asset(
-                  'assets/images/logoo_app.png',
+                  'assets/images/app.png',
                   width: 250,
                 ),
                 SizedBox(
@@ -124,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: Center(
                           child: Text(
-                            'Sign In',
+                            'Login',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

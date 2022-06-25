@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          automaticallyImplyLeading: false,
           expandedHeight: 200.0,
           elevation: 0,
           pinned: true,
@@ -45,6 +46,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           bottom: AppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             elevation: 0,
             backgroundColor: Colors.transparent,

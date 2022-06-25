@@ -1,4 +1,5 @@
 import 'package:authentication/presentation/pages/login_page.dart';
+import 'package:authentication/presentation/pages/user_form_page.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,6 +20,13 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
 
   Future signUp() async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => Center(
+              child: CircularProgressIndicator(),
+            ));
+
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
@@ -27,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
       print(authCredential!.uid);
       if (authCredential.uid.isNotEmpty) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => ParentPage()));
+            context, MaterialPageRoute(builder: (_) => UserFormPage()));
       } else {
         Fluttertoast.showToast(msg: "Something is wrong");
       }
@@ -67,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 20,
                 ),
                 Image.asset(
-                  'assets/images/logoo_app.png',
+                  'assets/images/app.png',
                   width: 250,
                 ),
                 SizedBox(

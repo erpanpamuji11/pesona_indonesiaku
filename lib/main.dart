@@ -1,6 +1,6 @@
 import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:authentication/presentation/pages/signup_page.dart';
-import 'package:core/common/styles/text_styles.dart';
+import 'package:authentication/presentation/pages/user_form_page.dart';
 import 'package:core/data/models/umkm_model.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/data/repository/wisata_repository.dart';
@@ -9,7 +9,6 @@ import 'package:core/presentation/pages/akun/profile_page.dart';
 import 'package:core/presentation/pages/bridge_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
-import 'package:core/presentation/pages/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: navigatorKey,
           title: "Pesona Indonesiaku",
           theme: ThemeData.light(),
-          home: const SplashScreen(),
+          home: const BridgePage(),
           onGenerateRoute: (RouteSettings settings) {
             switch (settings.name) {
               case ParentPage.ROUTE_NAME:

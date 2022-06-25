@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:core/data/models/wisata_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wisata/presentation/pages/detail_page.dart';
 
 Widget fetchWisata(String collectionName) {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -22,75 +24,80 @@ Widget fetchWisata(String collectionName) {
       return ListView.builder(
           itemCount: snapshot.data == null ? 0 : snapshot.data!.docs.length,
           itemBuilder: (_, index) {
-            DocumentSnapshot umkm = snapshot.data!.docs[index];
+            DocumentSnapshot wisata = snapshot.data!.docs[index];
 
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        margin: const EdgeInsets.all(10.0),
-                        child: Material(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey),
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.network(
-                                      umkm['imgUrl'],
-                                      width: 120.0,
-                                      height: 120.0,
-                                      fit: BoxFit.cover,
-                                      errorBuilder: (context, url, error) =>
-                                          const Text('Failed load image'),
-                                    )),
-                              ),
-                              const SizedBox(width: 10.0),
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      umkm['name'],
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 5.0,
-                                    ),
-                                    IconInfo(
-                                      text: umkm['category'],
-                                      icon: Icons.location_on_rounded,
-                                    ),
-                                    const SizedBox(
-                                      height: 5.0,
-                                    ),
-                                    IconInfo(
-                                      text: umkm['address'],
-                                      icon: Icons.category_outlined,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, DetailPage.routeName, arguments: Wisata(name: wisata['name'], address: wisata['address'], provincy: wisata['provincy'], category: wisata['category'], description: wisata['description'], imgUrl: wisata['imgUrl']));
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                        )),
+                          margin: const EdgeInsets.all(10.0),
+                          child: Material(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.network(
+                                        wisata['imgUrl'],
+                                        width: 120.0,
+                                        height: 120.0,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (context, url, error) =>
+                                            const Text('Failed load image'),
+                                      )),
+                                ),
+                                const SizedBox(width: 10.0),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        wisata['name'],
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      IconInfo(
+                                        text: wisata['category'],
+                                        icon: Icons.location_on_rounded,
+                                      ),
+                                      const SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      IconInfo(
+                                        text: wisata['address'],
+                                        icon: Icons.category_outlined,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
                   ),
                 ),
                 Container(
@@ -109,7 +116,7 @@ Widget fetchWisata(String collectionName) {
                           .collection(collectionName)
                           .doc(FirebaseAuth.instance.currentUser!.email)
                           .collection("items")
-                          .doc(umkm.id)
+                          .doc(wisata.id)
                           .delete();
                     },
                   ),

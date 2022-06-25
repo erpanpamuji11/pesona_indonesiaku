@@ -23,10 +23,10 @@ class _ParentPageState extends State<ParentPage> {
   int _currentIndex = 0;
 
   final _screen = <Widget>[
-    const HomePage(),
+    HomePage(),
     SearchPage(),
-    const WishlistPage(),
-    const ProfilePage()
+    WishlistPage(),
+    ProfilePage()
   ];
 
   @override
