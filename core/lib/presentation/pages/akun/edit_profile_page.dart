@@ -34,7 +34,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
     if (picked != null)
       setState(() {
-        _dobController!.text = "${picked.day}/ ${picked.month}/ ${picked.year}";
+        _dobController.text = "${picked.day}/ ${picked.month}/ ${picked.year}";
       });
   }
 
@@ -45,12 +45,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
       return _collectionRef
           .doc(FirebaseAuth.instance.currentUser!.email)
           .update({
-        "name": _nameController!.text,
-        "nickName": _nickNameController!.text,
-        "phone": _phoneController!.text,
-        "dob": _dobController!.text,
+        "name": _nameController.text,
+        "nickName": _nickNameController.text,
+        "phone": _phoneController.text,
+        "dob": _dobController.text,
         "gender": _selectedGender,
-        "age": _ageController!.text,
+        "age": _ageController.text,
       }).then((value) => print("Updated Successfully"));
     } on FirebaseAuthException catch (e) {
       print(e);

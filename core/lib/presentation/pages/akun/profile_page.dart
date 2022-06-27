@@ -158,12 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 iconButton: 'assets/icons/Setting.svg',
                 textButton: 'Pengaturan',
                 pressButton: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SettingsPage(),
-                    ),
-                  );
+                  Navigator.pushNamed(context, SettingsPage.routeName);
                 },
               ),
               const SizedBox(

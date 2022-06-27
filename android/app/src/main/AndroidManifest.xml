@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dicoding.pesona_indonesiaku_app">
    <application
+        android:usesCleartextTraffic="true"
         android:label="pesona_indonesiaku_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

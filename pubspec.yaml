@@ -46,11 +46,13 @@ dependencies:
   encrypt: ^5.0.1
   sqflite_sqlcipher: ^2.1.1
   fluttertoast: ^8.0.9
+  shared_preferences: ^2.0.15
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.1.3+1
+  firebase_messaging: ^11.4.2
 
   #modular
   core:
@@ -65,6 +67,7 @@ dependencies:
     path: search
   authentication:
     path: authentication
+  
 
 dev_dependencies:
   flutter_test:

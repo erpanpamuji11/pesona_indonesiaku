@@ -6,10 +6,13 @@ import 'package:core/data/models/wisata_model.dart';
 import 'package:core/data/repository/wisata_repository.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
 import 'package:core/presentation/pages/akun/profile_page.dart';
+import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/bridge_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
+import 'package:core/widgets/permission_notifucation.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/presentation/pages/search_page.dart';
@@ -21,9 +24,15 @@ import 'package:wisata/presentation/pages/input_wisata_page.dart';
 import 'package:wisata/presentation/pages/list_wisata_page.dart';
 import 'package:wishlist/presentation/pages/wishlist_page.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("Handling a background message: ${message.messageId}");
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await requestPermision();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(const MyApp());
 }
 
@@ -78,6 +87,8 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(builder: (_) => PickWisata());
               case DetailUmkmPage.routeName:
                 return DetailUmkmPage.route(umkm: settings.arguments as Umkm);
+              case SettingsPage.routeName:
+                return MaterialPageRoute(builder: (_) => const SettingsPage());
             }
             return null;
           },
