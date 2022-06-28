@@ -28,6 +28,7 @@ dependencies:
   sqflite_sqlcipher: ^2.1.1
   firebase_messaging: ^11.4.2
   shared_preferences: ^2.0.15
+  fluttertoast: ^8.0.9
 
   #modular
   wishlist:

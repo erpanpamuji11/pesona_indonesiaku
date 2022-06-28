@@ -7,7 +7,6 @@ import 'package:core/presentation/pages/akun/widgets/menu_profile_button.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:umkm/presentation/pages/input_umkm.dart';
 import 'package:wisata/presentation/pages/input_wisata_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -42,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(
                 height: 20,
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 5,
               ),
@@ -50,8 +49,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
-                padding: EdgeInsets.all(20),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
@@ -61,14 +60,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Text(
-                        'Jadilah Duta Pariwisata dan UMKM Indonesia',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
+                    const Text(
+                      'Jadilah Duta Pariwisata dan UMKM Indonesia',
+                      style: TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -83,14 +80,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: ElevatedButton(
-                                child: Text('Tambah Data Wisata'),
+                                child: const Text('Tambah Data Wisata'),
                                 onPressed: () {
                                   Navigator.pushNamed(
                                       context, InputWisataPage.routeName);
                                 },
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Expanded(
@@ -102,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: ElevatedButton(
-                                child: Text('Tambah Data UMKM'),
+                                child: const Text('Tambah Data UMKM'),
                                 onPressed: () {
                                   Navigator.pushNamed(
                                       context, PickWisata.routeName);
@@ -114,14 +111,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 5,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               MenuProfileButton(
@@ -167,9 +164,17 @@ class _ProfilePageState extends State<ProfilePage> {
               MenuProfileButton(
                 iconButton: 'assets/icons/Logout.svg',
                 textButton: 'Keluar',
-                pressButton: () => FirebaseAuth.instance.signOut().then(
-                    (value) =>
-                        Navigator.pushNamed(context, LoginPage.routeName)),
+                pressButton: () {
+                  showDialog(context: context, builder: (context) => AlertDialog(
+                    content: Text('Keluar dari akun ini?'),
+                    buttonPadding: EdgeInsets.all(20),
+                    actions: [
+                      GestureDetector(onTap: () => Navigator.pop(context, false), child: Text('No')),
+                      SizedBox(width: 20,),
+                      GestureDetector(onTap: () => FirebaseAuth.instance.signOut().then((value) => Navigator.pushNamed(context, LoginPage.routeName)), child: Text('Yes'))
+                    ],
+                  ));
+                }
               ),
             ],
           ),
@@ -191,10 +196,10 @@ class _ProfilePageState extends State<ProfilePage> {
         var data = snapshot.data;
         if (data == null) {
           return Container(
-            margin: EdgeInsets.only(left: 15),
+            margin: const EdgeInsets.only(left: 15),
             child: Row(
-              children: [
-                const SizedBox(
+              children: const [
+                SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -216,7 +221,7 @@ class _ProfilePageState extends State<ProfilePage> {
           );
         }
         return Container(
-          margin: EdgeInsets.only(left: 15),
+          margin: const EdgeInsets.only(left: 15),
           child: Row(
             children: [
               const SizedBox(
@@ -227,17 +232,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Text(
                     'Hai ${data['nickName']}!',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     '${currentUser.email}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),

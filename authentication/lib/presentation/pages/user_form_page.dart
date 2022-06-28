@@ -17,7 +17,7 @@ class _UserFormPageState extends State<UserFormPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
-  List<String> _gender = ["Laki-laki", "Wanita", "Lainnya"];
+  final List<String> _gender = ["Laki-laki", "Wanita", "Lainnya"];
   String _selectedGender = "Laki-laki";
 
   Future<void> _selectDateFromPicker(BuildContext context) async {
@@ -27,17 +27,18 @@ class _UserFormPageState extends State<UserFormPage> {
       firstDate: DateTime(DateTime.now().year - 30),
       lastDate: DateTime(DateTime.now().year),
     );
-    if (picked != null)
+    if (picked != null) {
       setState(() {
         _dobController.text = "${picked.day}/ ${picked.month}/ ${picked.year}";
       });
+    }
   }
 
   Future sendUserDataToDB() async {
     showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => Center(
+        builder: (context) => const Center(
               child: CircularProgressIndicator(),
             ));
 
@@ -58,7 +59,7 @@ class _UserFormPageState extends State<UserFormPage> {
             "age": _ageController.text,
           })
           .then((value) => Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => ParentPage())))
+              context, MaterialPageRoute(builder: (_) => const ParentPage())))
           .catchError((error) => print("something is wrong. $error"));
     } on FirebaseAuthException catch (e) {
       print(e);
@@ -78,6 +79,11 @@ class _UserFormPageState extends State<UserFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.lightBlue,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -86,9 +92,6 @@ class _UserFormPageState extends State<UserFormPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
                 const Text(
                   "Masukan Data Diri Anda",
                   style: TextStyle(
@@ -104,61 +107,56 @@ class _UserFormPageState extends State<UserFormPage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 buildTextField(_nameController, "Nama Lengkap",
                     "Masukan Nama Lengkap", TextInputType.text),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 buildTextField(_nickNameController, "Nama Panggilan",
                     "Masukan Nama Panggilan", TextInputType.text),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 buildTextField(_phoneController, "Nomor Telephone",
                     "Masukan Nomor Telephone", TextInputType.number),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
-                Container(
-                  child: TextFormField(
-                    controller: _dobController,
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      hintText: "Tanggal Lahir",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                      suffixIcon: IconButton(
-                        onPressed: () => _selectDateFromPicker(context),
-                        icon: const Icon(Icons.calendar_today_outlined),
-                      ),
+                TextFormField(
+                  controller: _dobController,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    hintText: "Tanggal Lahir",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    suffixIcon: IconButton(
+                      onPressed: () => _selectDateFromPicker(context),
+                      icon: const Icon(Icons.calendar_today_outlined),
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 _buildDropDown("Jenis Kalamin", _gender),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 buildTextField(_ageController, "Umur", "Masukan Umur",
                     TextInputType.number),
-                SizedBox(
-                  height: 50,
+                const SizedBox(
+                  height: 30,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text('Kembali')),
-                    ElevatedButton(
-                        onPressed: () => sendUserDataToDB(),
-                        child: Text('Simpan Data')),
-                  ],
-                )
+                ElevatedButton(
+                    onPressed: () => sendUserDataToDB(),
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      width: double.maxFinite,
+                        child: const Center(child: Text('Simpan Data'))
+                    )
+                ),
               ],
             ),
           ),
@@ -177,7 +175,7 @@ class _UserFormPageState extends State<UserFormPage> {
         child: DropdownButton<String>(
           hint: Text(
             hinText,
-            style: TextStyle(fontSize: 17, color: Colors.grey),
+            style: const TextStyle(fontSize: 17, color: Colors.grey),
           ),
           value: _selectedGender,
           iconSize: 25,

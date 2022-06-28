@@ -1,11 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:core/presentation/pages/akun/profile_page.dart';
-import 'package:core/presentation/pages/akun/widgets/button_page_profile.dart';
-import 'package:core/presentation/pages/akun/widgets/form_edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -18,11 +14,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _nickNameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
-  TextEditingController _dobController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
 
   final user = FirebaseAuth.instance.currentUser!;
-  List<String> _gender = ["Laki-laki", "Wanita", "Lainnya"];
+  final List<String> _gender = ["Laki-laki", "Wanita", "Lainnya"];
   String _selectedGender = "Laki-laki";
 
   Future<void> _selectDateFromPicker(BuildContext context) async {
@@ -32,10 +28,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
       firstDate: DateTime(DateTime.now().year - 30),
       lastDate: DateTime(DateTime.now().year),
     );
-    if (picked != null)
+    if (picked != null) {
       setState(() {
         _dobController.text = "${picked.day}/ ${picked.month}/ ${picked.year}";
       });
+    }
   }
 
   Future updateData() async {
@@ -86,7 +83,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           var data = snapshot.data;
           if (data == null) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -96,7 +93,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     SizedBox(
                       height: 120,
                       width: 120,
@@ -146,7 +143,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                     Text(
                       user.email!,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
                       ),
@@ -160,7 +157,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         'Nama User',
                         data['name'],
                         TextInputType.text),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     textFormField(
@@ -169,7 +166,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         'Nama Panggilan',
                         data['nickName'],
                         TextInputType.text),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     textFormField(
@@ -178,21 +175,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         'Nomor Telephone',
                         data['phone'],
                         TextInputType.number),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      child: TextFormField(
-                        controller: _dobController,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          hintText: data['dob'],
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          suffixIcon: IconButton(
-                            onPressed: () => _selectDateFromPicker(context),
-                            icon: const Icon(Icons.calendar_today_outlined),
-                          ),
+                    TextFormField(
+                      controller: _dobController,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        hintText: data['dob'],
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        suffixIcon: IconButton(
+                          onPressed: () => _selectDateFromPicker(context),
+                          icon: const Icon(Icons.calendar_today_outlined),
                         ),
                       ),
                     ),
@@ -209,7 +204,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         'Umur',
                         data['age'],
                         TextInputType.number),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     ElevatedButton(
@@ -217,8 +212,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         child: Container(
                             height: 50,
                             width: double.maxFinite,
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Center(child: Text('Perbaruhi Data'))))
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: const Center(child: Text('Perbaruhi Data'))))
                   ],
                 ),
               )
@@ -263,7 +258,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         child: DropdownButton<String>(
           hint: Text(
             hinText,
-            style: TextStyle(fontSize: 17, color: Colors.grey),
+            style: const TextStyle(fontSize: 17, color: Colors.grey),
           ),
           value: dataDB,
           iconSize: 25,
