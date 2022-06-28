@@ -19,7 +19,6 @@ dependencies:
   image_picker: ^0.8.5+3
   email_validator: ^2.0.1
   flutter_svg: ^1.0.3
-  ndialog: ^4.1.1
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   carousel_slider: ^4.1.1

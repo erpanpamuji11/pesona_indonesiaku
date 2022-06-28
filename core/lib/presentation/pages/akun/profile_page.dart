@@ -5,6 +5,7 @@ import 'package:core/presentation/pages/akun/edit_profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/akun/widgets/menu_profile_button.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
+import 'package:core/widgets/profile_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata/presentation/pages/input_wisata_page.dart';
@@ -37,7 +38,32 @@ class _ProfilePageState extends State<ProfilePage> {
           Column(
             children: [
               const SizedBox(height: 20),
-              profileCard(),
+              Container(
+                margin: const EdgeInsets.only(left: 15),
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        profileText(),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          '${user.email}',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -166,12 +192,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 textButton: 'Keluar',
                 pressButton: () {
                   showDialog(context: context, builder: (context) => AlertDialog(
-                    content: Text('Keluar dari akun ini?'),
-                    buttonPadding: EdgeInsets.all(20),
+                    content: const Text('Keluar dari akun ini?'),
+                    buttonPadding: const EdgeInsets.all(20),
                     actions: [
-                      GestureDetector(onTap: () => Navigator.pop(context, false), child: Text('No')),
-                      SizedBox(width: 20,),
-                      GestureDetector(onTap: () => FirebaseAuth.instance.signOut().then((value) => Navigator.pushNamed(context, LoginPage.routeName)), child: Text('Yes'))
+                      GestureDetector(onTap: () => Navigator.pop(context, false), child: const Text('No')),
+                      const SizedBox(width: 20,),
+                      GestureDetector(onTap: () => FirebaseAuth.instance.signOut().then((value) => Navigator.pushNamed(context, LoginPage.routeName)), child: const Text('Yes'))
                     ],
                   ));
                 }
@@ -180,79 +206,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget profileCard() {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    var currentUser = _auth.currentUser;
-
-    return StreamBuilder(
-      stream: FirebaseFirestore.instance
-          .collection('users-form-data')
-          .doc(currentUser!.email)
-          .snapshots(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        var data = snapshot.data;
-        if (data == null) {
-          return Container(
-            margin: const EdgeInsets.only(left: 15),
-            child: Row(
-              children: const [
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
-                Text(
-                  '',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-        return Container(
-          margin: const EdgeInsets.only(left: 15),
-          child: Row(
-            children: [
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Hai ${data['nickName']}!',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '${currentUser.email}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        );
-      },
     );
   }
 }

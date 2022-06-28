@@ -18,7 +18,7 @@ class _PickWisataState extends State<PickWisata> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.lightBlue,
           ),
@@ -32,14 +32,14 @@ class _PickWisataState extends State<PickWisata> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Pilih Wisata Mana UMKM-mu berada',
               style: TextStyle(
                   fontSize: 26,
                   color: Colors.lightBlue,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -66,125 +66,123 @@ class _PickWisataState extends State<PickWisata> {
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.black26),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
-              child: Container(
-                child: StreamBuilder(
-                    stream: FirebaseFirestore.instance
-                        .collection("wisata")
-                        .where("name", isGreaterThanOrEqualTo: inputText)
-                        .snapshots(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (snapshot.hasError) {
-                        return Center(
-                          child: Text("Something went wrong"),
-                        );
-                      }
-
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
-                          child: Text("Loading"),
-                        );
-                      }
-                      return ListView(
-                        children: snapshot.data!.docs
-                            .map((DocumentSnapshot document) {
-                          Map<String, dynamic> data =
-                              document.data() as Map<String, dynamic>;
-                          return ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                margin: const EdgeInsets.all(10.0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, InputUmkmPage.routeName,
-                                          arguments: Wisata(
-                                              name: data['name'],
-                                              address: data['address'],
-                                              provincy: data['provincy'],
-                                              category: data['category'],
-                                              description: data['description'],
-                                              imgUrl: data['imgUrl']));
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              color: Colors.grey),
-                                          child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              child: Image.network(
-                                                data['imgUrl'],
-                                                width: 120.0,
-                                                height: 120.0,
-                                                fit: BoxFit.cover,
-                                                errorBuilder: (context, url,
-                                                        error) =>
-                                                    const Text(
-                                                        'Failed load image'),
-                                              )),
-                                        ),
-                                        const SizedBox(width: 10.0),
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  data['name'],
-                                                  style: const TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                                const SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                IconInfo(
-                                                  text: data['provincy'],
-                                                  icon:
-                                                      Icons.location_on_rounded,
-                                                ),
-                                                const SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                IconInfo(
-                                                  text: data['category'],
-                                                  icon: Icons.category_outlined,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                )),
-                          );
-                        }).toList(),
+              child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("wisata")
+                      .where("name", isGreaterThanOrEqualTo: inputText)
+                      .snapshots(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text("Something went wrong"),
                       );
-                    }),
-              ),
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: Text("Loading"),
+                      );
+                    }
+                    return ListView(
+                      children: snapshot.data!.docs
+                          .map((DocumentSnapshot document) {
+                        Map<String, dynamic> data =
+                            document.data() as Map<String, dynamic>;
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              margin: const EdgeInsets.all(10.0),
+                              child: Material(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, InputUmkmPage.routeName,
+                                        arguments: Wisata(
+                                            name: data['name'],
+                                            address: data['address'],
+                                            provincy: data['provincy'],
+                                            category: data['category'],
+                                            description: data['description'],
+                                            imgUrl: data['imgUrl']));
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.grey),
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            child: Image.network(
+                                              data['imgUrl'],
+                                              width: 120.0,
+                                              height: 120.0,
+                                              fit: BoxFit.cover,
+                                              errorBuilder: (context, url,
+                                                      error) =>
+                                                  const Text(
+                                                      'Failed load image'),
+                                            )),
+                                      ),
+                                      const SizedBox(width: 10.0),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                data['name'],
+                                                style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              const SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              IconInfo(
+                                                text: data['provincy'],
+                                                icon:
+                                                    Icons.location_on_rounded,
+                                              ),
+                                              const SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              IconInfo(
+                                                text: data['category'],
+                                                icon: Icons.category_outlined,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )),
+                        );
+                      }).toList(),
+                    );
+                  }),
             ),
           ],
         ),

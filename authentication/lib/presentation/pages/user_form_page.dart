@@ -79,11 +79,6 @@ class _UserFormPageState extends State<UserFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.lightBlue,
-        elevation: 0,
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15),
