@@ -1,6 +1,6 @@
 import 'package:core/data/models/wisata_model.dart';
 import 'package:flutter/material.dart';
-import 'package:wisata/presentation/pages/detail_page.dart';
+import 'package:wisata/presentation/pages/detail_wisata_page.dart';
 
 class WisataCard extends StatelessWidget {
   final Wisata wisata;
@@ -10,7 +10,7 @@ class WisataCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, DetailPage.routeName, arguments: wisata);
+          Navigator.pushNamed(context, DetailWisataPage.routeName, arguments: wisata);
         },
         child: Stack(
           children: [

@@ -163,21 +163,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 10,
               ),
               MenuProfileButton(
-                iconButton: 'assets/icons/Lock.svg',
-                textButton: 'Ubah Kata Sandi',
-                pressButton: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ChangePasswordPage(),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              MenuProfileButton(
                 iconButton: 'assets/icons/Setting.svg',
                 textButton: 'Pengaturan',
                 pressButton: () {

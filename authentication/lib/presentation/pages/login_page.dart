@@ -1,6 +1,6 @@
 import 'package:authentication/presentation/pages/signup_page.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
-import 'package:core/presentation/pages/home_page.dart';
+import 'package:core/widgets/mytextfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,12 +17,13 @@ class _LoginPageState extends State<LoginPage> {
   //text controller
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _obscureText = true;
 
   Future signIn() async {
     showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => Center(
+        builder: (context) => const Center(
               child: CircularProgressIndicator(),
             ));
 
@@ -69,75 +70,50 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Image.asset(
                   'assets/images/app.png',
                   width: 250,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   "Selamat Datang Kembali",
                   style: TextStyle(fontSize: 18),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 //email textfiled
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
-                  child: TextField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(12)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.lightBlue),
-                            borderRadius: BorderRadius.circular(12)),
-                        hintText: 'Email',
-                        fillColor: Colors.grey[200],
-                        filled: true),
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: buildTextField(_emailController, 'Email', 'Masukan Email', TextInputType.emailAddress),
                 ),
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 20,
                 ),
                 //password textfield
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
-                  child: TextField(
-                    keyboardType: TextInputType.visiblePassword,
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(12)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.lightBlue),
-                            borderRadius: BorderRadius.circular(12)),
-                        hintText: 'Password',
-                        fillColor: Colors.grey[200],
-                        filled: true),
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: buildTextFieldPassword(_passwordController, 'Password', 'Masukan Password', TextInputType.visiblePassword),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: InkWell(
                       onTap: signIn,
                       child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: Colors.lightBlue,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Login',
                             style: TextStyle(
@@ -148,23 +124,23 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Kamu Belum Daftar?',
+                    const Text(
+                      'Belum Punya Akun?',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     GestureDetector(
                       onTap: () =>
                           Navigator.pushNamed(context, SignUpPage.routeName),
-                      child: Text(
+                      child: const Text(
                         'Daftar Sekarang',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -178,6 +154,52 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildTextFieldPassword(TextEditingController controller, String labelText, String hintText, TextInputType inputType) {
+    return TextFormField(
+      controller: controller,
+      obscureText: _obscureText,
+      keyboardType: inputType,
+      style: const TextStyle(color: Colors.black, fontSize: 17),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "it is empty";
+        } else {
+          return null;
+        }
+      },
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        labelText: labelText,
+        hintText: hintText,
+        hintStyle: const TextStyle(fontSize: 18),
+        labelStyle: const TextStyle(color: Colors.grey),
+        // prefix: Icon(icon),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        suffixIcon: _obscureText == true
+            ? IconButton(
+            onPressed: () {
+              setState(() {
+                _obscureText = false;
+              });
+            },
+            icon: const Icon(
+              Icons.remove_red_eye,
+              size: 20,
+            ))
+            : IconButton(
+            onPressed: () {
+              setState(() {
+                _obscureText = true;
+              });
+            },
+            icon: const Icon(
+              Icons.visibility_off,
+              size: 20,
+            )),),
+
     );
   }
 }

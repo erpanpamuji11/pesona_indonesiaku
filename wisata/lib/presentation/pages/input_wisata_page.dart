@@ -163,9 +163,9 @@ class _InputWisataPageState extends State<InputWisataPage> {
                     buildTextField(addressController, "Alamat Lengkap",
                         "Masukan Alamat Lengkap", TextInputType.text),
                     const SizedBox(height: 10),
-                    _buildDropDown("Masukan Provinsi", _provincy),
+                    _buildDropDown("Masukan Provinsi", _provincy, _selectedProvincy),
                     const SizedBox(height: 10),
-                    _buildDropDown("Masukan Kategori", _category),
+                    _buildDropDown("Masukan Kategori", _category, _selectedCategory),
                     const SizedBox(height: 20),
                     _buildTextFieldParagraf(
                         deskripsiController,
@@ -278,7 +278,7 @@ class _InputWisataPageState extends State<InputWisataPage> {
     );
   }
 
-  _buildDropDown(String hinText, List<String> dataList) {
+  _buildDropDown(String hinText, List<String> dataList, String selectedData) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
@@ -290,12 +290,12 @@ class _InputWisataPageState extends State<InputWisataPage> {
             "Masukan Kategori",
             style: TextStyle(fontSize: 17, color: Colors.grey),
           ),
-          value: _selectedCategory,
+          value: selectedData,
           iconSize: 25,
           isExpanded: true,
           onChanged: (value) {
             setState(() {
-              _selectedCategory = value!;
+              selectedData = value!;
             });
           },
           items: dataList.map((location) {

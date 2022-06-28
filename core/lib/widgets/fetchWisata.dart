@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wisata/presentation/pages/detail_page.dart';
+import 'package:wisata/presentation/pages/detail_wisata_page.dart';
 
 Widget fetchWisata(String collectionName) {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,7 +15,7 @@ Widget fetchWisata(String collectionName) {
         .snapshots(),
     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
       if (snapshot.hasError) {
-        return Center(
+        return const Center(
           child: Text("Something is wrong"),
         );
       }
@@ -32,7 +31,7 @@ Widget fetchWisata(String collectionName) {
                 Expanded(
                   child: GestureDetector(
                     onTap: (){
-                      Navigator.pushNamed(context, DetailPage.routeName, arguments: Wisata(name: wisata['name'], address: wisata['address'], provincy: wisata['provincy'], category: wisata['category'], description: wisata['description'], imgUrl: wisata['imgUrl']));
+                      Navigator.pushNamed(context, DetailWisataPage.routeName, arguments: Wisata(name: wisata['name'], address: wisata['address'], provincy: wisata['provincy'], category: wisata['category'], description: wisata['description'], imgUrl: wisata['imgUrl']));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -101,10 +100,10 @@ Widget fetchWisata(String collectionName) {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 10),
+                  margin: const EdgeInsets.only(right: 10),
                   height: 120.0,
                   child: GestureDetector(
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       backgroundColor: Colors.black12,
                       child: Icon(
                         Icons.remove_circle_outline_outlined,

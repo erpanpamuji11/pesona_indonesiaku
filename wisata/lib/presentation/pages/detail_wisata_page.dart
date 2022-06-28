@@ -3,17 +3,18 @@ import 'package:core/data/models/wisata_model.dart';
 import 'package:core/widgets/fetchUmkm.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailWisataPage extends StatelessWidget {
   static const routeName = "/detailpage";
   final Wisata wisata;
-  const DetailPage({Key? key, required this.wisata}) : super(key: key);
+  const DetailWisataPage({Key? key, required this.wisata}) : super(key: key);
   static Route route({required Wisata wisata}) {
     return MaterialPageRoute(
       // ignore: prefer_const_constructors
       settings: RouteSettings(name: routeName),
       // ignore: prefer_const_constructors
-      builder: (_) => DetailPage(
+      builder: (_) => DetailWisataPage(
         wisata: wisata,
       ),
     );
@@ -36,7 +37,7 @@ class DetailPage extends StatelessWidget {
       "description": wisata.description,
       "imgUrl": wisata.imgUrl,
     }).then((value) =>
-            SnackBar(content: Text('Wisata Berhasil Masuk ke Wishlist')));
+            const SnackBar(content: Text('Wisata Berhasil Masuk ke Wishlist')));
   }
 
   @override
@@ -51,7 +52,7 @@ class DetailPage extends StatelessWidget {
                 backgroundColor: Colors.black38,
                 child: IconButton(
                     onPressed: () => Navigator.pop(context),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back,
                       color: Colors.white,
                     )),
@@ -64,8 +65,8 @@ class DetailPage extends StatelessWidget {
                   color: Colors.white,
                   child: Center(
                       child: Text(
-                    '${wisata.name}',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    wisata.name,
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   )),
                   width: double.maxFinite,
                   padding: const EdgeInsets.only(top: 5, bottom: 10),
@@ -90,35 +91,35 @@ class DetailPage extends StatelessWidget {
                 Column(
                   children: [
                     IconName(
-                      text: '${wisata.category}',
+                      text: wisata.category,
                       icon: Icons.local_cafe,
                     ),
                     IconName(
-                      text: '${wisata.address}',
+                      text: wisata.address,
                       icon: Icons.pin_drop_outlined,
                     ),
                     IconName(
-                        text: '${wisata.provincy}',
+                        text: wisata.provincy,
                         icon: Icons.local_activity_outlined),
                   ],
                 ),
                 Card(
-                  margin: EdgeInsets.symmetric(vertical: 20),
+                  margin: const EdgeInsets.symmetric(vertical: 20),
                   child: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     width: double.maxFinite,
                     child: Text(
-                      '${wisata.description}',
-                      style: TextStyle(
+                      wisata.description,
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
                   ),
                 ),
-                Text('UMKM Sekitar',
+                const Text('UMKM Sekitar',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                Container(
+                SizedBox(
                   height: 500,
                   child: fetchUmkm('umkm', wisata.name),
                 )
@@ -131,15 +132,15 @@ class DetailPage extends StatelessWidget {
         child: GestureDetector(
           child: InkWell(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              padding: EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.all(10),
               height: 60,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.lightBlue),
-              child: Center(
+              child: const Center(
                   child: Text(
-                'Tambah Whislist',
+                'Tambah Ke Whislist',
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -147,7 +148,9 @@ class DetailPage extends StatelessWidget {
               )),
             ),
           ),
-          onTap: () => addToWishlist(),
+          onTap: () {
+            addToWishlist().then((value) => Fluttertoast.showToast(msg: 'Wisata ${wisata.name} Tersimpan', backgroundColor: Colors.lightBlue));
+          },
         ),
       ),
     );

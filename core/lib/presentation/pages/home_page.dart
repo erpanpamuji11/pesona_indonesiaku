@@ -1,6 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:core/common/styles/colors.dart';
 import 'package:core/widgets/categorries.dart';
 import 'package:core/widgets/profile_text.dart';
 import 'package:core/widgets/wisata_card.dart';
@@ -21,17 +19,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 4, vsync: this);
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               height: 200,
               width: double.maxFinite,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.lightBlue,
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(30),
@@ -42,27 +39,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   profileNameTitle(),
-                  Text(
+                  const SizedBox(height: 5,),
+                  const Text(
                     'Discover \nPesona Indonesia',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 40,
                       color: Colors.white
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   GestureDetector(
                     onTap: () => Navigator.pushNamed(context, SearchPage.routeName),
                     child: Container(
                       height: 50,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20)
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                        children: const [
                           Icon(Icons.search),
                           Text('  Cari Wisata Terbaik dan UMKM Sekitar...')
                         ],
@@ -72,20 +70,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ],
               ),
             ),
-            Categories(),
+            const Categories(),
             Column(
               children: [
-                Divider(height: 5, thickness: 5),
+                const Divider(height: 5, thickness: 5),
                 Stack(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      height: 380,
+                    SizedBox(
+                      height: 340,
                       width: double.maxFinite,
                       child: BlocBuilder<WisataBloc, WisataState>(
                         builder: ((context, state) {
                           if (state is WisataLoading) {
-                            return Center(
+                            return const Center(
                               child: CircularProgressIndicator(),
                             );
                           } else if (state is WisataLoaded) {
@@ -97,9 +94,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     aspectRatio: 1.5,
                                     viewportFraction: 0.9,
                                     autoPlay: true,
-                                    autoPlayInterval: Duration(seconds: 6),
+                                    autoPlayInterval: const Duration(seconds: 6),
                                     autoPlayAnimationDuration:
-                                    Duration(milliseconds: 900),
+                                    const Duration(milliseconds: 900),
                                     autoPlayCurve: Curves.fastOutSlowIn,
                                     enlargeCenterPage: true,
                                     enlargeStrategy:
@@ -107,13 +104,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     enableInfiniteScroll: true,
                                     initialPage: 2));
                           } else {
-                            return Text('Error');
+                            return const Text('Error');
                           }
                         }),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: _buildSubHeading(
                           title: "Wisata Terbaik",
                           onTap: () {
@@ -128,74 +125,77 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             const SizedBox(
               height: 10,
             ),
-            Divider(
+            const Divider(
               height: 5,
               thickness: 5,
             ),
             const SizedBox(
               height: 10,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildSub("Majukan Wisata dan UMKM di Indonesia"),
-                  SizedBox(
-                    height: 3,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSub("Majukan Wisata dan UMKM di Indonesia"),
+                const SizedBox(
+                  height: 3,
+                ),
+                SizedBox(
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      _cardView(),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      _cardView(),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      _cardView()
+                    ],
                   ),
-                  Container(
-                    height: 150,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        _cardView(),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        _cardView(),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        _cardView()
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
-            Divider(
+            const Divider(
               height: 5,
               thickness: 5,
             ),
             const SizedBox(
               height: 10,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildSub("Bantuan dan Cara Penggunaan"),
-                  Container(
-                    height: 150,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        _cardView(),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        _cardView(),
-                        _cardView()
-                      ],
-                    ),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSub("Bantuan dan Cara Penggunaan"),
+                SizedBox(
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      _cardView(),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      _cardView(),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      _cardView()
+                    ],
+                  ),
+                )
+              ],
             )
           ],
         ),
@@ -209,12 +209,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         InkWell(
           onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               'Lihat Semua',
               style: TextStyle(fontSize: 15),
@@ -227,9 +227,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   _buildSub(String title) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Text(
         title,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -240,7 +241,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       width: 220,
       decoration: BoxDecoration(
           color: Colors.lightBlue, borderRadius: BorderRadius.circular(10)),
-      child: Center(
+      child: const Center(
         child: Text('UMKM'),
       ),
     );

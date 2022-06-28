@@ -12,7 +12,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   late SharedPreferences preferences;
-  late bool pilihan = true;
+  late bool pilihan = false;
 
   void initState() {
     super.initState();

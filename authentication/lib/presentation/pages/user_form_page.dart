@@ -128,7 +128,7 @@ class _UserFormPageState extends State<UserFormPage> {
                         borderRadius: BorderRadius.circular(12)),
                     suffixIcon: IconButton(
                       onPressed: () => _selectDateFromPicker(context),
-                      icon: const Icon(Icons.calendar_today_outlined),
+                      icon: const Icon(Icons.calendar_today_outlined,),
                     ),
                   ),
                 ),
@@ -147,7 +147,7 @@ class _UserFormPageState extends State<UserFormPage> {
                 ElevatedButton(
                     onPressed: () => sendUserDataToDB(),
                     child: Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(15),
                       width: double.maxFinite,
                         child: const Center(child: Text('Simpan Data'))
                     )
