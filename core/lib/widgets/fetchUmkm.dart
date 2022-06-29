@@ -39,7 +39,6 @@ Widget fetchUmkm(String collectionName, String docName) {
                 child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     margin: const EdgeInsets.all(10.0),

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
+import 'package:core/widgets/mytextfield.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -117,8 +118,6 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.lightBlue,
-        backgroundColor: Colors.white,
         elevation: 0,
         title: const Text('Input UMKM'),
       ),
@@ -143,7 +142,6 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
                             child: Container(
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 margin: const EdgeInsets.all(10.0),
@@ -212,14 +210,16 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    _buildTextField(
-                        nameController, "Nama UMKM", "Masukan Nama UMKM"),
+                    buildTextField(nameController, 'Nama UMKM',
+                        'Masukan Nama UMKM', TextInputType.text),
                     const SizedBox(height: 10),
-                    _buildTextField(addressController, "Alamat Lengkap",
-                        "Masukan Alamat Lengkap"),
+                    buildTextField(addressController, 'Alamat UMKM',
+                        'Masukan Alamat Lengkap', TextInputType.text),
                     const SizedBox(height: 10),
-                    _buildTextField(deskripsiController, "Deskripsi Singkat",
-                        "Tuliskan Deskripsi Singkat Mengenai Wisata Anda"),
+                    _buildTextFieldParagraf(
+                        deskripsiController,
+                        'Deskripsi Singkat',
+                        'Tuliskan deskripsi singkat mengenai wisata anda'),
                     const SizedBox(height: 10),
                     _buildDropDownCategory(),
                     const SizedBox(height: 20),
@@ -267,35 +267,6 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
     );
   }
 
-  _buildTextField(
-      TextEditingController controller, String labelText, String hintText) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
-          borderRadius: BorderRadius.circular(10)),
-      child: TextFormField(
-        controller: controller,
-        style: const TextStyle(color: Colors.black, fontSize: 17),
-        validator: (value) {
-          if (value!.isEmpty) {
-            return "it is empty";
-          } else {
-            return null;
-          }
-        },
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
-            labelText: labelText,
-            hintText: hintText,
-            hintStyle: const TextStyle(fontSize: 17),
-            labelStyle: const TextStyle(color: Colors.grey),
-            // prefix: Icon(icon),
-            border: InputBorder.none),
-      ),
-    );
-  }
-
   _buildDropDownCategory() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -337,7 +308,7 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
       child: TextField(
         maxLines: 5,
         controller: controller,
-        style: const TextStyle(color: Colors.black, fontSize: 17),
+        style: const TextStyle(fontSize: 17),
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 5),
             labelText: labelText,
@@ -374,6 +345,26 @@ class IconInfo extends StatelessWidget {
           child: Text(text),
         )
       ],
+    );
+  }
+
+  _buildTextFieldParagraf(
+      TextEditingController controller, String labelText, String hintText) {
+    return Container(
+      child: TextField(
+        maxLines: 5,
+        controller: controller,
+        style: const TextStyle(fontSize: 17),
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(10),
+            labelText: labelText,
+            hintText: hintText,
+            hintStyle: const TextStyle(fontSize: 17),
+            labelStyle: const TextStyle(color: Colors.grey),
+            // prefix: Icon(icon),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
+      ),
     );
   }
 }

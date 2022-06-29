@@ -18,8 +18,6 @@ class MenuProfileButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all<Color>(Colors.grey.shade50),
           padding: MaterialStateProperty.all(const EdgeInsets.all(20)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -35,7 +33,7 @@ class MenuProfileButton extends StatelessWidget {
               iconButton,
               width: 24,
               height: 24,
-              color: Colors.blue.shade700,
+              color: Colors.white,
             ),
             const SizedBox(
               width: 20,
@@ -43,7 +41,6 @@ class MenuProfileButton extends StatelessWidget {
             Expanded(
               child: Text(
                 textButton,
-                style: const TextStyle(color: Colors.black),
               ),
             ),
             Icon(

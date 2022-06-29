@@ -1,5 +1,8 @@
+import 'package:core/common/styles/theme.dart';
+import 'package:core/presentation/bloc/my_theme/bloc/theme_bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -12,7 +15,8 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   late SharedPreferences preferences;
-  late bool pilihan = false;
+  late bool isNotified = false;
+  late bool isThemed = false;
 
   void initState() {
     super.initState();
@@ -42,11 +46,21 @@ class _SettingsPageState extends State<SettingsPage> {
   Future init() async {
     preferences = await SharedPreferences.getInstance();
 
-    bool? pilihan = preferences.getBool('isDaily');
-    if (pilihan == null) return;
+    bool? pilihanNotif = preferences.getBool('isDaily');
+    if (pilihanNotif == null) return;
 
     setState(() {
-      this.pilihan = pilihan;
+      this.isNotified = pilihanNotif;
+    });
+
+    //theme
+    preferences = await SharedPreferences.getInstance();
+
+    bool? pilihanTheme = preferences.getBool('isTheme');
+    if (pilihanTheme == null) return;
+
+    setState(() {
+      this.isThemed = pilihanTheme;
     });
   }
 
@@ -54,42 +68,73 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.lightBlue,
-        backgroundColor: Colors.white,
         elevation: 0,
         title: const Text(
           'Settings',
-          style: TextStyle(
-            color: Colors.lightBlue,
-          ),
         ),
       ),
       body: Container(
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
-            color: Colors.white,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
             children: [
-              Text('Nyalakan Notifikasi'),
-              Switch.adaptive(
-                  value: pilihan,
-                  onChanged: (value) async {
-                    setState(() {
-                      pilihan = value;
-                      if (pilihan == true) {
-                        FirebaseMessaging.instance.subscribeToTopic('wisata');
-                        preferences.setBool("isDaily", pilihan);
-                      }
-                      if (pilihan == false) {
-                        FirebaseMessaging.instance
-                            .unsubscribeFromTopic('wisata');
-                        preferences.setBool('isDaily', pilihan);
-                      }
-                    });
-                  }),
+              Container(
+                padding: EdgeInsets.all(2),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Nyalakan Notifikasi'),
+                    Switch.adaptive(
+                        value: isNotified,
+                        onChanged: (value) async {
+                          setState(() {
+                            isNotified = value;
+                            if (isNotified == true) {
+                              FirebaseMessaging.instance
+                                  .subscribeToTopic('wisata');
+                              preferences.setBool("isDaily", isNotified);
+                            }
+                            if (isNotified == false) {
+                              FirebaseMessaging.instance
+                                  .unsubscribeFromTopic('wisata');
+                              preferences.setBool('isDaily', isNotified);
+                            }
+                          });
+                        }),
+                  ],
+                ),
+              ),
+              Divider(),
+              Container(
+                padding: EdgeInsets.all(2),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Tema Gelap'),
+                    Switch.adaptive(
+                        value: isThemed,
+                        onChanged: (value) async {
+                          isThemed = value;
+                          setState(() {
+                            if (value == true) {
+                              BlocProvider.of<ThemeBloc>(context).add(
+                                  const ThemeChanged(
+                                      theme: AppTheme.DarkTheme));
+                              preferences.setBool("isTheme", isThemed);
+                            }
+                            if (value == false) {
+                              BlocProvider.of<ThemeBloc>(context).add(
+                                  const ThemeChanged(
+                                      theme: AppTheme.LightTheme));
+                              preferences.setBool("isTheme", isThemed);
+                            }
+                          });
+                        }),
+                  ],
+                ),
+              )
             ],
           )),
     );

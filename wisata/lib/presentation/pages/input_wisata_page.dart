@@ -140,8 +140,6 @@ class _InputWisataPageState extends State<InputWisataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.lightBlue,
-        backgroundColor: Colors.white,
         elevation: 0,
         title: const Text('Input Wisata'),
       ),
@@ -157,15 +155,17 @@ class _InputWisataPageState extends State<InputWisataPage> {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                 child: Column(
                   children: [
-                    buildTextField(
-                        nameController, "Nama Wisata", "Masukan Nama Wisata", TextInputType.text),
+                    buildTextField(nameController, "Nama Wisata",
+                        "Masukan Nama Wisata", TextInputType.text),
                     const SizedBox(height: 10),
                     buildTextField(addressController, "Alamat Lengkap",
                         "Masukan Alamat Lengkap", TextInputType.text),
                     const SizedBox(height: 10),
-                    _buildDropDown("Masukan Provinsi", _provincy, _selectedProvincy),
+                    _buildDropDown(
+                        "Masukan Provinsi", _provincy, _selectedProvincy),
                     const SizedBox(height: 10),
-                    _buildDropDown("Masukan Kategori", _category, _selectedCategory),
+                    _buildDropDown(
+                        "Masukan Kategori", _category, _selectedCategory),
                     const SizedBox(height: 20),
                     _buildTextFieldParagraf(
                         deskripsiController,
@@ -315,7 +315,7 @@ class _InputWisataPageState extends State<InputWisataPage> {
       child: TextField(
         maxLines: 5,
         controller: controller,
-        style: const TextStyle(color: Colors.black, fontSize: 17),
+        style: const TextStyle(fontSize: 17),
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(10),
             labelText: labelText,
@@ -323,7 +323,8 @@ class _InputWisataPageState extends State<InputWisataPage> {
             hintStyle: const TextStyle(fontSize: 17),
             labelStyle: const TextStyle(color: Colors.grey),
             // prefix: Icon(icon),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:core/presentation/pages/akun/change_password_page.dart';
 import 'package:core/presentation/pages/akun/edit_profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/akun/widgets/menu_profile_button.dart';
@@ -26,8 +25,6 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.lightBlue,
         elevation: 0,
         title: const Text(
           'Profile',
@@ -88,8 +85,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     const Text(
                       'Jadilah Duta Pariwisata dan UMKM Indonesia',
-                      style: TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 5,
@@ -173,20 +170,30 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 10,
               ),
               MenuProfileButton(
-                iconButton: 'assets/icons/Logout.svg',
-                textButton: 'Keluar',
-                pressButton: () {
-                  showDialog(context: context, builder: (context) => AlertDialog(
-                    content: const Text('Keluar dari akun ini?'),
-                    buttonPadding: const EdgeInsets.all(20),
-                    actions: [
-                      GestureDetector(onTap: () => Navigator.pop(context, false), child: const Text('No')),
-                      const SizedBox(width: 20,),
-                      GestureDetector(onTap: () => FirebaseAuth.instance.signOut().then((value) => Navigator.pushNamed(context, LoginPage.routeName)), child: const Text('Yes'))
-                    ],
-                  ));
-                }
-              ),
+                  iconButton: 'assets/icons/Logout.svg',
+                  textButton: 'Keluar',
+                  pressButton: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              content: const Text('Keluar dari akun ini?'),
+                              buttonPadding: const EdgeInsets.all(20),
+                              actions: [
+                                GestureDetector(
+                                    onTap: () => Navigator.pop(context, false),
+                                    child: const Text('No')),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                GestureDetector(
+                                    onTap: () => FirebaseAuth.instance
+                                        .signOut()
+                                        .then((value) => Navigator.pushNamed(
+                                            context, LoginPage.routeName)),
+                                    child: const Text('Yes'))
+                              ],
+                            ));
+                  }),
             ],
           ),
         ],

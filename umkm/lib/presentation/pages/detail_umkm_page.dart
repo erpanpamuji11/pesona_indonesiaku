@@ -46,7 +46,7 @@ class DetailUmkmPage extends StatelessWidget {
                 preferredSize: const Size.fromHeight(20),
                 child: Container(
                   height: 50,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   child: Center(
                       child: Text(
                     '${umkm.name}',
@@ -74,6 +74,9 @@ class DetailUmkmPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
+                    SizedBox(
+                      height: 5,
+                    ),
                     IconName(
                       text: '${umkm.category}',
                       icon: Icons.local_cafe,

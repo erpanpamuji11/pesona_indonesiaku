@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-Widget buildTextField(
-    TextEditingController controller, String labelText, String hintText, TextInputType inputType) {
+Widget buildTextField(TextEditingController controller, String labelText,
+    String hintText, TextInputType inputType) {
   return TextFormField(
     controller: controller,
     keyboardType: inputType,
-    style: const TextStyle(color: Colors.black, fontSize: 17),
+    style: const TextStyle(fontSize: 17),
     validator: (value) {
       if (value!.isEmpty) {
         return "it is empty";
@@ -14,7 +14,8 @@ Widget buildTextField(
       }
     },
     decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         labelText: labelText,
         hintText: hintText,
         hintStyle: const TextStyle(fontSize: 18),

@@ -15,12 +15,10 @@ class _PickWisataState extends State<PickWisata> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.lightBlue,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -36,8 +34,8 @@ class _PickWisataState extends State<PickWisata> {
               'Pilih Wisata Mana UMKM-mu berada',
               style: TextStyle(
                   fontSize: 26,
-                  color: Colors.lightBlue,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightBlue),
             ),
             const SizedBox(
               height: 10,
@@ -54,16 +52,14 @@ class _PickWisataState extends State<PickWisata> {
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 filled: true,
-                fillColor: Colors.white,
                 prefixIcon: const Icon(
                   Icons.search,
-                  color: Colors.black12,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 hintText: "Masukan Wisata Impianmu",
-                hintStyle: const TextStyle(fontSize: 14, color: Colors.black26),
+                hintStyle: const TextStyle(fontSize: 14),
               ),
             ),
             const SizedBox(
@@ -89,8 +85,8 @@ class _PickWisataState extends State<PickWisata> {
                       );
                     }
                     return ListView(
-                      children: snapshot.data!.docs
-                          .map((DocumentSnapshot document) {
+                      children:
+                          snapshot.data!.docs.map((DocumentSnapshot document) {
                         Map<String, dynamic> data =
                             document.data() as Map<String, dynamic>;
                         return ClipRRect(
@@ -98,7 +94,6 @@ class _PickWisataState extends State<PickWisata> {
                           child: Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               margin: const EdgeInsets.all(10.0),
@@ -132,8 +127,8 @@ class _PickWisataState extends State<PickWisata> {
                                                 BorderRadius.circular(10.0),
                                             child: Image.network(
                                               data['imgUrl'],
-                                              width: 120.0,
-                                              height: 120.0,
+                                              width: 100.0,
+                                              height: 100.0,
                                               fit: BoxFit.cover,
                                               errorBuilder: (context, url,
                                                       error) =>
@@ -161,8 +156,7 @@ class _PickWisataState extends State<PickWisata> {
                                               ),
                                               IconInfo(
                                                 text: data['provincy'],
-                                                icon:
-                                                    Icons.location_on_rounded,
+                                                icon: Icons.location_on_rounded,
                                               ),
                                               const SizedBox(
                                                 height: 5.0,

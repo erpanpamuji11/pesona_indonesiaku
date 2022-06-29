@@ -10,7 +10,8 @@ class WisataCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, DetailWisataPage.routeName, arguments: wisata);
+          Navigator.pushNamed(context, DetailWisataPage.routeName,
+              arguments: wisata);
         },
         child: Stack(
           children: [
@@ -33,8 +34,8 @@ class WisataCard extends StatelessWidget {
             Container(
               height: 400,
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.0)),
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.white),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -43,6 +44,7 @@ class WisataCard extends StatelessWidget {
                       height: 200,
                       width: double.maxFinite,
                       decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0)),
                       child: Image.network(
                         wisata.imgUrl,
@@ -76,9 +78,9 @@ class WisataCard extends StatelessWidget {
                         Text(
                           wisata.name,
                           style: const TextStyle(
-                              color: Colors.black,
                               fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
                         ),
                         const SizedBox(
                           height: 4,
@@ -96,7 +98,9 @@ class WisataCard extends StatelessWidget {
                             Text(
                               wisata.provincy,
                               style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black),
                             )
                           ],
                         )

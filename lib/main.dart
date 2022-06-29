@@ -4,12 +4,13 @@ import 'package:authentication/presentation/pages/user_form_page.dart';
 import 'package:core/data/models/umkm_model.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/data/repository/wisata_repository.dart';
+import 'package:core/presentation/bloc/my_theme/bloc/theme_bloc.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
-import 'package:core/presentation/pages/akun/profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/bridge_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
+import 'package:core/presentation/pages/profile_page.dart';
 import 'package:core/widgets/permission_notifucation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -34,9 +35,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await requestPermision();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.lightBlue
-  ));
   runApp(const MyApp());
 }
 
@@ -51,50 +49,66 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
               create: (_) => WisataBloc(wisataRepository: WisataRepository())
-                ..add(LoadWisata()))
+                ..add(LoadWisata())),
+          BlocProvider(
+            create: (_) => ThemeBloc(),
+          )
         ],
-        child: MaterialApp(
-          navigatorKey: navigatorKey,
-          title: "Pesona Indonesiaku",
-          theme: ThemeData.light(),
-          home: const BridgePage(),
-          onGenerateRoute: (RouteSettings settings) {
-            switch (settings.name) {
-              case ParentPage.ROUTE_NAME:
-                return MaterialPageRoute(builder: (_) => const ParentPage());
-              case HomePage.routeName:
-                return MaterialPageRoute(builder: (_) => const HomePage());
-              case ListWisataPage.routeName:
-                return MaterialPageRoute(
-                    builder: (_) => const ListWisataPage());
-              case DetailWisataPage.routeName:
-                return DetailWisataPage.route(wisata: settings.arguments as Wisata);
-              case LoginPage.routeName:
-                return MaterialPageRoute(builder: (_) => const LoginPage());
-              case BridgePage.routeName:
-                return MaterialPageRoute(builder: (_) => const BridgePage());
-              case SignUpPage.routeName:
-                return MaterialPageRoute(builder: (_) => const SignUpPage());
-              case SearchPage.routeName:
-                return MaterialPageRoute(builder: (_) => SearchPage());
-              case WishlistPage.routeName:
-                return MaterialPageRoute(builder: (_) => const WishlistPage());
-              case InputWisataPage.routeName:
-                return MaterialPageRoute(
-                    builder: (_) => const InputWisataPage());
-              case InputUmkmPage.routeName:
-                return InputUmkmPage.route(
-                    wisata: settings.arguments as Wisata);
-              case ProfilePage.routeName:
-                return MaterialPageRoute(builder: (_) => const ProfilePage());
-              case PickWisata.routeName:
-                return MaterialPageRoute(builder: (_) => PickWisata());
-              case DetailUmkmPage.routeName:
-                return DetailUmkmPage.route(umkm: settings.arguments as Umkm);
-              case SettingsPage.routeName:
-                return MaterialPageRoute(builder: (_) => const SettingsPage());
-            }
-            return null;
+        child: BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              navigatorKey: navigatorKey,
+              title: "Pesona Indonesiaku",
+              theme: state.themeData,
+              home: const BridgePage(),
+              onGenerateRoute: (RouteSettings settings) {
+                switch (settings.name) {
+                  case ParentPage.ROUTE_NAME:
+                    return MaterialPageRoute(
+                        builder: (_) => const ParentPage());
+                  case HomePage.routeName:
+                    return MaterialPageRoute(builder: (_) => const HomePage());
+                  case ListWisataPage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const ListWisataPage());
+                  case DetailWisataPage.routeName:
+                    return DetailWisataPage.route(
+                        wisata: settings.arguments as Wisata);
+                  case LoginPage.routeName:
+                    return MaterialPageRoute(builder: (_) => const LoginPage());
+                  case BridgePage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const BridgePage());
+                  case SignUpPage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const SignUpPage());
+                  case SearchPage.routeName:
+                    return MaterialPageRoute(builder: (_) => SearchPage());
+                  case WishlistPage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const WishlistPage());
+                  case InputWisataPage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const InputWisataPage());
+                  case InputUmkmPage.routeName:
+                    return InputUmkmPage.route(
+                        wisata: settings.arguments as Wisata);
+                  case ProfilePage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const ProfilePage());
+                  case PickWisata.routeName:
+                    return MaterialPageRoute(builder: (_) => PickWisata());
+                  case DetailUmkmPage.routeName:
+                    return DetailUmkmPage.route(
+                        umkm: settings.arguments as Umkm);
+                  case SettingsPage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const SettingsPage());
+                }
+                return null;
+              },
+            );
           },
         ));
   }

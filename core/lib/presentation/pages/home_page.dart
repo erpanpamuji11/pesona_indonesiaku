@@ -29,40 +29,66 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               height: 200,
               width: double.maxFinite,
               decoration: const BoxDecoration(
-                color: Colors.lightBlue,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(30),
-                  bottomLeft: Radius.circular(30)
-                )
-              ),
+                  color: Colors.lightBlue,
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(30),
+                      bottomLeft: Radius.circular(30)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black45,
+                      offset: Offset(
+                        5.0,
+                        5.0,
+                      ),
+                      blurRadius: 10.0,
+                      spreadRadius: 2.0,
+                    ), //BoxShadow
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 0.0,
+                      spreadRadius: 0.0,
+                    ),
+                  ]),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   profileNameTitle(),
-                  const SizedBox(height: 5,),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   const Text(
                     'Discover \nPesona Indonesia',
                     style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 40,
-                      color: Colors.white
-                    ),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 40,
+                        color: Colors.white),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, SearchPage.routeName),
+                    onTap: () =>
+                        Navigator.pushNamed(context, SearchPage.routeName),
                     child: Container(
                       height: 50,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)
+                        color: Colors.black12,
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: const [
-                          Icon(Icons.search),
-                          Text('  Cari Wisata Terbaik dan UMKM Sekitar...')
+                          Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            '  Cari Wisata Terbaik dan UMKM Sekitar...',
+                            style: TextStyle(color: Colors.white),
+                          )
                         ],
                       ),
                     ),
@@ -94,13 +120,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     aspectRatio: 1.5,
                                     viewportFraction: 0.9,
                                     autoPlay: true,
-                                    autoPlayInterval: const Duration(seconds: 6),
+                                    autoPlayInterval:
+                                        const Duration(seconds: 6),
                                     autoPlayAnimationDuration:
-                                    const Duration(milliseconds: 900),
+                                        const Duration(milliseconds: 900),
                                     autoPlayCurve: Curves.fastOutSlowIn,
                                     enlargeCenterPage: true,
                                     enlargeStrategy:
-                                    CenterPageEnlargeStrategy.height,
+                                        CenterPageEnlargeStrategy.height,
                                     enableInfiniteScroll: true,
                                     initialPage: 2));
                           } else {

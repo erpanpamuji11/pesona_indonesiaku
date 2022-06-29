@@ -10,8 +10,6 @@ class WishlistPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.lightBlue,
         elevation: 0,
         title: const Text('Wishlist'),
       ),

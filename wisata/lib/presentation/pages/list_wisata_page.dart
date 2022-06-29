@@ -12,14 +12,13 @@ class ListWisataPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.lightBlue,
           elevation: 0,
           title: const Text("Wisata Favoritmu"),
         ),
         body: Container(
             margin: const EdgeInsets.all(15),
-            child: BlocBuilder<WisataBloc, WisataState>(builder: (context, state) {
+            child:
+                BlocBuilder<WisataBloc, WisataState>(builder: (context, state) {
               if (state is WisataLoading) {
                 return const Center(
                   child: const CircularProgressIndicator(),
@@ -64,7 +63,8 @@ class HeroCarousCard extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 )),
-                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 20.0),
                 child: Text(
                   wisata.name,
                   style: const TextStyle(

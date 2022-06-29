@@ -14,8 +14,6 @@ class ListWisataByCategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.lightBlue,
           elevation: 0,
           title: Text("Wisata ${categoryName}"),
         ),

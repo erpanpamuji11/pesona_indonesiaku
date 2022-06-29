@@ -1,5 +1,5 @@
-import 'package:core/presentation/pages/akun/profile_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
+import 'package:core/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';

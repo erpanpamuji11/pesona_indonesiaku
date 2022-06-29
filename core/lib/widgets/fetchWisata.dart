@@ -30,15 +30,21 @@ Widget fetchWisata(String collectionName) {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamed(context, DetailWisataPage.routeName, arguments: Wisata(name: wisata['name'], address: wisata['address'], provincy: wisata['provincy'], category: wisata['category'], description: wisata['description'], imgUrl: wisata['imgUrl']));
+                    onTap: () {
+                      Navigator.pushNamed(context, DetailWisataPage.routeName,
+                          arguments: Wisata(
+                              name: wisata['name'],
+                              address: wisata['address'],
+                              provincy: wisata['provincy'],
+                              category: wisata['category'],
+                              description: wisata['description'],
+                              imgUrl: wisata['imgUrl']));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                            color: Colors.white,
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           margin: const EdgeInsets.all(10.0),
@@ -68,7 +74,8 @@ Widget fetchWisata(String collectionName) {
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         wisata['name'],

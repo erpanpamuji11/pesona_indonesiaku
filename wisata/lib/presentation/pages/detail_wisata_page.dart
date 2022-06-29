@@ -62,11 +62,12 @@ class DetailWisataPage extends StatelessWidget {
                 preferredSize: const Size.fromHeight(20),
                 child: Container(
                   height: 50,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   child: Center(
                       child: Text(
                     wisata.name,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   )),
                   width: double.maxFinite,
                   padding: const EdgeInsets.only(top: 5, bottom: 10),
@@ -90,6 +91,9 @@ class DetailWisataPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
+                    SizedBox(
+                      height: 5,
+                    ),
                     IconName(
                       text: wisata.category,
                       icon: Icons.local_cafe,
@@ -149,7 +153,9 @@ class DetailWisataPage extends StatelessWidget {
             ),
           ),
           onTap: () {
-            addToWishlist().then((value) => Fluttertoast.showToast(msg: 'Wisata ${wisata.name} Tersimpan', backgroundColor: Colors.lightBlue));
+            addToWishlist().then((value) => Fluttertoast.showToast(
+                msg: 'Wisata ${wisata.name} Tersimpan',
+                backgroundColor: Colors.lightBlue));
           },
         ),
       ),
