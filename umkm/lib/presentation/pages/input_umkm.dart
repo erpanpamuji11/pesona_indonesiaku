@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
+import 'package:core/widgets/myicon.dart';
 import 'package:core/widgets/mytextfield.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,6 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
     setState(() {
       _isLoading = true;
     });
-    var uniqueKey = firestoreRef.collection(collectionName).doc();
     String uploadFileName =
         DateTime.now().millisecondsSinceEpoch.toString() + '.jpg';
     Reference reference =
@@ -133,7 +133,7 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: double.maxFinite,
                       child: Column(
                         children: [
@@ -158,19 +158,22 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             color: Colors.grey),
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            child: Image.network(
-                                              widget.wisata.imgUrl,
-                                              width: 120.0,
-                                              height: 120.0,
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (context, url,
-                                                      error) =>
-                                                  const Text(
-                                                      'Failed load image'),
-                                            )),
+                                        child: Hero(
+                                          tag: widget.wisata.name,
+                                          child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              child: Image.network(
+                                                widget.wisata.imgUrl,
+                                                width: 120.0,
+                                                height: 120.0,
+                                                fit: BoxFit.cover,
+                                                errorBuilder: (context, url,
+                                                        error) =>
+                                                    const Text(
+                                                        'Failed load image'),
+                                              )),
+                                        ),
                                       ),
                                       const SizedBox(width: 10.0),
                                       Padding(
@@ -317,53 +320,6 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
             labelStyle: const TextStyle(color: Colors.grey),
             // prefix: Icon(icon),
             border: InputBorder.none),
-      ),
-    );
-  }
-}
-
-class IconInfo extends StatelessWidget {
-  final String text;
-  final IconData? icon;
-  const IconInfo({Key? key, required this.text, this.icon}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(
-          icon,
-          size: 16,
-          color: Colors.lightGreen,
-        ),
-        const SizedBox(
-          width: 3.0,
-        ),
-        SizedBox(
-          width: 160,
-          child: Text(text),
-        )
-      ],
-    );
-  }
-
-  _buildTextFieldParagraf(
-      TextEditingController controller, String labelText, String hintText) {
-    return Container(
-      child: TextField(
-        maxLines: 5,
-        controller: controller,
-        style: const TextStyle(fontSize: 17),
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(10),
-            labelText: labelText,
-            hintText: hintText,
-            hintStyle: const TextStyle(fontSize: 17),
-            labelStyle: const TextStyle(color: Colors.grey),
-            // prefix: Icon(icon),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
       ),
     );
   }

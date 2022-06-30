@@ -58,41 +58,37 @@ class DetailWisataPage extends StatelessWidget {
                     )),
               ),
             ),
-            bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(20),
-                child: Container(
-                  height: 50,
-                  color: Theme.of(context).primaryColor,
-                  child: Center(
-                      child: Text(
-                    wisata.name,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  )),
-                  width: double.maxFinite,
-                  padding: const EdgeInsets.only(top: 5, bottom: 10),
-                )),
             pinned: true,
             backgroundColor: Colors.lightBlue,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(
-                wisata.imgUrl,
-                width: double.maxFinite,
-                fit: BoxFit.cover,
+              background: Hero(
+                tag: wisata.name,
+                child: Image.network(
+                  wisata.imgUrl,
+                  width: double.maxFinite,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           SliverToBoxAdapter(
               child: Container(
-            margin: const EdgeInsets.only(left: 15, right: 15),
+            margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20)
+              )
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   children: [
-                    SizedBox(
-                      height: 5,
+                    Text(wisata.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    const SizedBox(
+                      height: 10,
                     ),
                     IconName(
                       text: wisata.category,

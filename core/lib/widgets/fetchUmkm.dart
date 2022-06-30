@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/umkm_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:core/widgets/myicon.dart';
 import 'package:flutter/material.dart';
 import 'package:umkm/presentation/pages/detail_umkm_page.dart';
 
@@ -14,7 +13,7 @@ Widget fetchUmkm(String collectionName, String docName) {
         .snapshots(),
     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
       if (snapshot.hasError) {
-        return Center(
+        return const Center(
           child: Text("Something is wrong"),
         );
       }
@@ -101,31 +100,4 @@ Widget fetchUmkm(String collectionName, String docName) {
           });
     },
   );
-}
-
-class IconInfo extends StatelessWidget {
-  final String text;
-  final IconData? icon;
-  const IconInfo({Key? key, required this.text, this.icon}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(
-          icon,
-          size: 16,
-          color: Colors.lightGreen,
-        ),
-        const SizedBox(
-          width: 3.0,
-        ),
-        SizedBox(
-          width: 160,
-          child: Text(text),
-        )
-      ],
-    );
-  }
 }

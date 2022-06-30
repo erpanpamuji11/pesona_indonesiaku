@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
+import 'package:core/widgets/myicon.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata/presentation/pages/detail_wisata_page.dart';
@@ -59,16 +60,19 @@ Widget fetchWisata(String collectionName) {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Colors.grey),
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: Image.network(
-                                        wisata['imgUrl'],
-                                        width: 120.0,
-                                        height: 120.0,
-                                        fit: BoxFit.cover,
-                                        errorBuilder: (context, url, error) =>
-                                            const Text('Failed load image'),
-                                      )),
+                                  child: Hero(
+                                    tag: wisata['name'],
+                                    child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        child: Image.network(
+                                          wisata['imgUrl'],
+                                          width: 120.0,
+                                          height: 120.0,
+                                          fit: BoxFit.cover,
+                                          errorBuilder: (context, url, error) =>
+                                              const Text('Failed load image'),
+                                        )),
+                                  ),
                                 ),
                                 const SizedBox(width: 10.0),
                                 Padding(
@@ -132,31 +136,4 @@ Widget fetchWisata(String collectionName) {
           });
     },
   );
-}
-
-class IconInfo extends StatelessWidget {
-  final String text;
-  final IconData? icon;
-  const IconInfo({Key? key, required this.text, this.icon}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(
-          icon,
-          size: 16,
-          color: Colors.lightGreen,
-        ),
-        const SizedBox(
-          width: 3.0,
-        ),
-        SizedBox(
-          width: 160,
-          child: Text(text),
-        )
-      ],
-    );
-  }
 }

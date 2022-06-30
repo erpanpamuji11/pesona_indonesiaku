@@ -46,9 +46,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         profileText(),
-                        const SizedBox(
-                          height: 10,
-                        ),
                         Text(
                           '${user.email}',
                           style: const TextStyle(
