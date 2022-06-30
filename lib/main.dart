@@ -1,6 +1,5 @@
 import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:authentication/presentation/pages/signup_page.dart';
-import 'package:authentication/presentation/pages/user_form_page.dart';
 import 'package:core/data/models/umkm_model.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/data/repository/wisata_repository.dart';
@@ -15,7 +14,6 @@ import 'package:core/widgets/permission_notifucation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/presentation/pages/search_page.dart';
 import 'package:umkm/presentation/pages/detail_umkm_page.dart';
@@ -64,7 +62,7 @@ class MyApp extends StatelessWidget {
               home: const BridgePage(),
               onGenerateRoute: (RouteSettings settings) {
                 switch (settings.name) {
-                  case ParentPage.ROUTE_NAME:
+                  case ParentPage.routeName:
                     return MaterialPageRoute(
                         builder: (_) => const ParentPage());
                   case HomePage.routeName:

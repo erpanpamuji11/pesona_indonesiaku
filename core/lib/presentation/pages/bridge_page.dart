@@ -14,15 +14,15 @@ class BridgePage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
-            return SnackBar(content: Text("Terjadi Sedikit Masalah"));
+            return const SnackBar(content: Text("Terjadi Sedikit Masalah"));
           } else if (snapshot.hasData) {
-            return ParentPage();
+            return const ParentPage();
           } else {
-            return LoginPage();
+            return const LoginPage();
           }
         },
       ),

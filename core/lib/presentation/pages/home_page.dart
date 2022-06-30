@@ -26,8 +26,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              height: 200,
-              width: double.maxFinite,
+              height: 190,
               decoration: const BoxDecoration(
                   color: Colors.lightBlue,
                   borderRadius: BorderRadius.only(
@@ -60,8 +59,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   const Text(
                     'Discover \nPesona Indonesia',
                     style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 40,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 32,
                         color: Colors.white),
                   ),
                   const SizedBox(
@@ -174,15 +173,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       const SizedBox(
                         width: 15,
                       ),
-                      _cardView(),
+                      _cardView('assets/banner/banner1.png'),
                       const SizedBox(
                         width: 10,
                       ),
-                      _cardView(),
+                      _cardView('assets/banner/banner2.png'),
                       const SizedBox(
                         width: 10,
                       ),
-                      _cardView()
+                      _cardView('assets/banner/banner3.png'),
+                      const SizedBox(
+                        width: 15,
+                      ),
                     ],
                   ),
                 )
@@ -198,32 +200,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             const SizedBox(
               height: 10,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildSub("Bantuan dan Cara Penggunaan"),
-                SizedBox(
-                  height: 150,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      _cardView(),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      _cardView(),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      _cardView()
-                    ],
-                  ),
-                )
-              ],
-            )
           ],
         ),
       ),
@@ -262,15 +238,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Container _cardView() {
+  Container _cardView(String imgUrl) {
     return Container(
       height: 100,
-      width: 220,
+      width: 260,
       decoration: BoxDecoration(
           color: Colors.lightBlue, borderRadius: BorderRadius.circular(10)),
-      child: const Center(
-        child: Text('UMKM'),
-      ),
+      child: Image.asset(imgUrl)
     );
   }
 }

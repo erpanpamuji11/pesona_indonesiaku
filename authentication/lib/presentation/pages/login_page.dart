@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if (authCredential.uid.isNotEmpty) {
-        Navigator.pushNamed(context, ParentPage.ROUTE_NAME);
+        Navigator.pushNamed(context, ParentPage.routeName);
       } else {
         Fluttertoast.showToast(msg: "Something is wrong");
       }

@@ -7,7 +7,7 @@ import 'package:search/presentation/pages/search_page.dart';
 import 'package:wishlist/presentation/pages/wishlist_page.dart';
 
 class ParentPage extends StatefulWidget {
-  static const ROUTE_NAME = '/ParentPage';
+  static const routeName = '/ParentPage';
 
   const ParentPage({Key? key}) : super(key: key);
 
@@ -24,10 +24,10 @@ class _ParentPageState extends State<ParentPage> {
   int _currentIndex = 0;
 
   final _screen = <Widget>[
-    HomePage(),
+    const HomePage(),
     SearchPage(),
-    WishlistPage(),
-    ProfilePage()
+    const WishlistPage(),
+    const ProfilePage()
   ];
 
   //back Exit app
@@ -38,11 +38,11 @@ class _ParentPageState extends State<ParentPage> {
     return WillPopScope(
       onWillPop: () async {
         final difference = DateTime.now().difference(timeBackPressed);
-        final isExitWarning = difference >= Duration(seconds: 2);
+        final isExitWarning = difference >= const Duration(seconds: 2);
         timeBackPressed = DateTime.now();
 
         if (isExitWarning) {
-          final message = 'Press again to Exit';
+          const message = 'Press again to Exit';
           Fluttertoast.showToast(msg: message, backgroundColor: Colors.black38);
           return false;
         } else {

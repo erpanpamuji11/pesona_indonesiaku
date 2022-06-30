@@ -45,7 +45,7 @@ Widget profileNameTitle() {
         return Text('World');
       }
       return Text(
-        'Hallo ${data['nickName']}..',
+        'Hallo ${data['nickName']}!',
         style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w500,
