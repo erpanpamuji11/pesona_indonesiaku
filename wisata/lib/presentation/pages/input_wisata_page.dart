@@ -161,11 +161,9 @@ class _InputWisataPageState extends State<InputWisataPage> {
                     buildTextField(addressController, "Alamat Lengkap",
                         "Masukan Alamat Lengkap", TextInputType.text),
                     const SizedBox(height: 10),
-                    _buildDropDown(
-                        "Masukan Provinsi", _provincy, _selectedProvincy),
+                    _buildDropDownprovincy(),
                     const SizedBox(height: 10),
-                    _buildDropDown(
-                        "Masukan Kategori", _category, _selectedCategory),
+                    _buildDropDownCategory(),
                     const SizedBox(height: 20),
                     _buildTextFieldParagraf(
                         deskripsiController,
@@ -278,54 +276,21 @@ class _InputWisataPageState extends State<InputWisataPage> {
     );
   }
 
-  _buildDropDown(String hinText, List<String> dataList, String selectedData) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10)),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          hint: const Text(
-            "Masukan Kategori",
-            style: TextStyle(fontSize: 17, color: Colors.grey),
-          ),
-          value: selectedData,
-          iconSize: 25,
-          isExpanded: true,
-          onChanged: (value) {
-            setState(() {
-              selectedData = value!;
-            });
-          },
-          items: dataList.map((location) {
-            return DropdownMenuItem(
-              child: Text(location),
-              value: location,
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }
-
   _buildTextFieldParagraf(
       TextEditingController controller, String labelText, String hintText) {
-    return Container(
-      child: TextField(
-        maxLines: 5,
-        controller: controller,
-        style: const TextStyle(fontSize: 17),
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(10),
-            labelText: labelText,
-            hintText: hintText,
-            hintStyle: const TextStyle(fontSize: 17),
-            labelStyle: const TextStyle(color: Colors.grey),
-            // prefix: Icon(icon),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
-      ),
+    return TextField(
+      maxLines: 5,
+      controller: controller,
+      style: const TextStyle(fontSize: 17),
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.all(10),
+          labelText: labelText,
+          hintText: hintText,
+          hintStyle: const TextStyle(fontSize: 17),
+          labelStyle: const TextStyle(color: Colors.grey),
+          // prefix: Icon(icon),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
     );
   }
 }
