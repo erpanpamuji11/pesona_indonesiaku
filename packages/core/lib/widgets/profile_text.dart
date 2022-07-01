@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +15,7 @@ Widget profileText() {
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       var data = snapshot.data;
       if (data == null) {
-        return Text('World');
+        return const Text('World');
       }
       return Text(
         '${data['name']}',
@@ -42,7 +41,7 @@ Widget profileNameTitle() {
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       var data = snapshot.data;
       if (data == null) {
-        return Text('World');
+        return const Text('Hallo World!', style: TextStyle(color: Colors.white),);
       }
       return Text(
         'Hallo ${data['nickName']}!',

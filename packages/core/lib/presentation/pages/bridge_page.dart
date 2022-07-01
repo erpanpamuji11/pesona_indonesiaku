@@ -1,5 +1,5 @@
-import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
+import 'package:core/presentation/pages/onboarding_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class BridgePage extends StatelessWidget {
           } else if (snapshot.hasData) {
             return const ParentPage();
           } else {
-            return const LoginPage();
+            return const OnBoardingPage();
           }
         },
       ),

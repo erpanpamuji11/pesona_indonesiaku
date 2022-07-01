@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wisata/presentation/pages/list_wisata_by_category.dart';
-import 'package:wisata/presentation/pages/list_wisata_page.dart';
 
 // We need satefull widget for our categories
 
@@ -20,87 +20,63 @@ class _CategoriesState extends State<Categories> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 15),
-              child: Text(
+              margin: const EdgeInsets.only(left: 15),
+              child: const Text(
                 "Kategori Wisata",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Container(
+            SizedBox(
                 height: 60,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        Icon(
-                          Icons.nature,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                        'assets/icons/nature.svg',
                         'Alam',
                         'Alam'),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        Icon(
-                          Icons.mosque,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                        'assets/icons/mosque.svg',
                         'Religi',
                         'Religi'),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        Icon(
-                          Icons.holiday_village_outlined,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                        'assets/icons/necklace.svg',
                         'Budaya',
                         'Budaya'),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        Icon(
-                          Icons.sports,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                        'assets/icons/soccer.svg',
                         'Sports',
                         'Sport'),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        Icon(
-                          Icons.cast_for_education,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                        'assets/icons/learning.svg',
                         'Edukasi',
                         'Edukasi'),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        Icon(
-                          Icons.apple,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                        'assets/icons/sprout.svg',
                         'Botani',
                         'Botani'),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                   ],
@@ -110,7 +86,7 @@ class _CategoriesState extends State<Categories> {
   }
 
   Widget _buildCategory(
-      Icon iconButton, String textButton, String categoryWisata) {
+      String iconButton, String textButton, String categoryWisata) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -124,18 +100,18 @@ class _CategoriesState extends State<Categories> {
       child: Container(
         height: 60.0,
         width: 60.0,
-        padding: EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: Colors.lightBlue),
+            borderRadius: BorderRadius.circular(10), color: Colors.lightBlueAccent),
         child: Column(
           children: [
             Center(
-              child: iconButton,
+              child: SvgPicture.asset(iconButton, width: 38, height: 38,),
             ),
             Center(
               child: Text(
                 textButton,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 12,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),

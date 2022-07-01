@@ -55,17 +55,17 @@ dependencies:
 
   #modular
   core:
-    path: core
+    path: packages/core
   wisata:
-    path: wisata
+    path: packages/wisata
   umkm:
-    path: umkm
+    path: packages/umkm
   wishlist:
-    path: wishlist
+    path: packages/wishlist
   search:
-    path: search
+    path: packages/search
   authentication:
-    path: authentication
+    path: packages/authentication
 
 
 dev_dependencies:

@@ -8,6 +8,7 @@ import 'package:core/presentation/pages/ParentPage.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/bridge_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
+import 'package:core/presentation/pages/onboarding_page.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
 import 'package:core/presentation/pages/profile_page.dart';
 import 'package:core/widgets/permission_notifucation.dart';
@@ -103,6 +104,9 @@ class MyApp extends StatelessWidget {
                   case SettingsPage.routeName:
                     return MaterialPageRoute(
                         builder: (_) => const SettingsPage());
+                  case OnBoardingPage.routeName:
+                    return MaterialPageRoute(
+                        builder: (_) => const OnBoardingPage());
                 }
                 return null;
               },

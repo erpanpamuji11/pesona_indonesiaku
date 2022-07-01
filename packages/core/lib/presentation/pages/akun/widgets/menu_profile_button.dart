@@ -43,9 +43,8 @@ class MenuProfileButton extends StatelessWidget {
                 textButton,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios,
-              color: Colors.grey.shade600,
               size: 18,
             ),
           ],

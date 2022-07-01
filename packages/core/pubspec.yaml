@@ -28,6 +28,7 @@ dependencies:
   firebase_messaging: ^11.4.2
   shared_preferences: ^2.0.15
   fluttertoast: ^8.0.9
+  smooth_page_indicator: ^1.0.0+2
 
   #modular
   wishlist:

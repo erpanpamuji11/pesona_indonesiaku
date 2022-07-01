@@ -1,9 +1,10 @@
 import 'package:authentication/presentation/pages/login_page.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/presentation/pages/akun/edit_profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/akun/widgets/menu_profile_button.dart';
+import 'package:core/presentation/pages/onboarding_page.dart';
 import 'package:core/presentation/pages/pick_wisata.dart';
+import 'package:core/widgets/mybutton.dart';
 import 'package:core/widgets/profile_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -99,13 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: ElevatedButton(
-                                child: const Text('Tambah Data Wisata'),
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, InputWisataPage.routeName);
-                                },
-                              )),
+                              child: myButton(() {Navigator.pushNamed(context, InputWisataPage.routeName);}, 'Tambah Data Wisata', 'assets/icons/add.svg')),
                         ),
                         const SizedBox(
                           width: 15,
@@ -118,13 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 color: Colors.lightGreen,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: ElevatedButton(
-                                child: const Text('Tambah Data UMKM'),
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, PickWisata.routeName);
-                                },
-                              )),
+                              child: myButton(() {Navigator.push(context, MaterialPageRoute(builder: (context) => PickWisata()));}, 'Tambah Data UMKM', 'assets/icons/add.svg')),
                         ),
                       ],
                     )
@@ -186,7 +175,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     onTap: () => FirebaseAuth.instance
                                         .signOut()
                                         .then((value) => Navigator.pushNamed(
-                                            context, LoginPage.routeName)),
+                                            context, OnBoardingPage.routeName)),
                                     child: const Text('Yes'))
                               ],
                             ));

@@ -63,7 +63,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -144,7 +143,8 @@ class _LoginPageState extends State<LoginPage> {
                         'Daftar Sekarang',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.lightBlue),
+                          color: Colors.lightBlue
+                            ),
                       ),
                     )
                   ],
@@ -162,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
       controller: controller,
       obscureText: _obscureText,
       keyboardType: inputType,
-      style: const TextStyle(color: Colors.black, fontSize: 17),
+      style: const TextStyle(fontSize: 17),
       validator: (value) {
         if (value!.isEmpty) {
           return "it is empty";
