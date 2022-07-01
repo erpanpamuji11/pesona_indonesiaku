@@ -62,10 +62,11 @@ class _InputWisataPageState extends State<InputWisataPage> {
   //Kategori
   final List<String> _category = [
     "Alam",
+    "Religi",
     "Budaya",
+    "Sports",
     "Edukasi",
-    "Sport",
-    "Religi"
+    "Botani"
   ];
   String _selectedCategory = "Alam";
 
