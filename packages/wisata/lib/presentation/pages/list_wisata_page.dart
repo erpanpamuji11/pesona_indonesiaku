@@ -21,7 +21,7 @@ class ListWisataPage extends StatelessWidget {
                 BlocBuilder<WisataBloc, WisataState>(builder: (context, state) {
               if (state is WisataLoading) {
                 return const Center(
-                  child: const CircularProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 );
               } else if (state is WisataLoaded) {
                 return WisataList(wisata: state.wisata.toList());

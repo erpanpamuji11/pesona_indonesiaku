@@ -71,6 +71,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.2.0
 
 
 flutter_native_splash:

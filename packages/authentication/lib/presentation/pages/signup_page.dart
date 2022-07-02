@@ -41,10 +41,10 @@ class _SignUpPageState extends State<SignUpPage> {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Fluttertoast.showToast(msg: "The password provided is too weak.");
+        Fluttertoast.showToast(msg: "Kata sandi yang diberikan terlalu lemah.");
       } else if (e.code == 'email-already-in-use') {
         Fluttertoast.showToast(
-            msg: "The account already exists for that email.");
+            msg: "Email sudah digunakan untuk akun lain.");
       }
     } catch (e) {
       print(e);

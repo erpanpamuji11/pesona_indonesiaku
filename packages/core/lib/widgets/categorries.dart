@@ -30,52 +30,39 @@ class _CategoriesState extends State<Categories> {
               height: 5,
             ),
             SizedBox(
-                height: 60,
+                height: 65,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
                     const SizedBox(
                       width: 15,
                     ),
-                    _buildCategory(
-                        'assets/icons/nature.svg',
-                        'Alam',
-                        'Alam'),
+                    _buildCategory('assets/icons/nature.svg', 'Alam', 'Alam'),
                     const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        'assets/icons/mosque.svg',
-                        'Religi',
-                        'Religi'),
+                        'assets/icons/mosque.svg', 'Religi', 'Religi'),
                     const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        'assets/icons/necklace.svg',
-                        'Budaya',
-                        'Budaya'),
+                        'assets/icons/necklace.svg', 'Budaya', 'Budaya'),
                     const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        'assets/icons/soccer.svg',
-                        'Sports',
-                        'Sport'),
+                        'assets/icons/soccer.svg', 'Sports', 'Sport'),
                     const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        'assets/icons/learning.svg',
-                        'Edukasi',
-                        'Edukasi'),
+                        'assets/icons/learning.svg', 'Edukasi', 'Edukasi'),
                     const SizedBox(
                       width: 15,
                     ),
                     _buildCategory(
-                        'assets/icons/sprout.svg',
-                        'Botani',
-                        'Botani'),
+                        'assets/icons/sprout.svg', 'Botani', 'Botani'),
                     const SizedBox(
                       width: 15,
                     ),
@@ -98,15 +85,19 @@ class _CategoriesState extends State<Categories> {
         );
       },
       child: Container(
-        height: 60.0,
-        width: 60.0,
+        width: 60,
         padding: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: Colors.lightBlueAccent),
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.lightBlueAccent),
         child: Column(
           children: [
             Center(
-              child: SvgPicture.asset(iconButton, width: 38, height: 38,),
+              child: SvgPicture.asset(
+                iconButton,
+                width: 38,
+                height: 38,
+              ),
             ),
             Center(
               child: Text(

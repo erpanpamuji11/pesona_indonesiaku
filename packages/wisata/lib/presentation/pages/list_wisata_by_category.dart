@@ -15,7 +15,7 @@ class ListWisataByCategoryPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text("Wisata ${categoryName}"),
+          title: Text("Wisata $categoryName"),
         ),
         body: Container(
             margin: const EdgeInsets.all(15),
@@ -23,7 +23,7 @@ class ListWisataByCategoryPage extends StatelessWidget {
                 BlocBuilder<WisataBloc, WisataState>(builder: (context, state) {
               if (state is WisataLoading) {
                 return const Center(
-                  child: const CircularProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 );
               } else if (state is WisataLoaded) {
                 return WisataList(

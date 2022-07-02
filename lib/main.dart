@@ -16,6 +16,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:search/presentation/pages/search_page.dart';
 import 'package:umkm/presentation/pages/detail_umkm_page.dart';
 import 'package:umkm/presentation/pages/input_umkm.dart';
@@ -34,7 +35,12 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await requestPermision();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FlutterNativeSplash.removeAfter(initialization);
   runApp(const MyApp());
+}
+
+Future initialization(BuildContext? context) async {
+  await Future.delayed(Duration(seconds: 2));
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();

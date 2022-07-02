@@ -63,10 +63,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           children: [
             TextButton(onPressed: (){
               controller.jumpToPage(2);
-            }, child: Text('SKIP', style: TextStyle(fontWeight: FontWeight.w900),)),
+            }, child: const Text('SKIP', style: TextStyle(fontWeight: FontWeight.w900),)),
             Center(child: SmoothPageIndicator(
               count: 3, controller: controller,
-              effect: WormEffect(
+              effect: const WormEffect(
                   spacing: 16,
                   dotColor: Colors.black26,
                   activeDotColor: Colors.lightBlue
@@ -83,27 +83,25 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   }
   
   Widget buildOnboardingPage(String urlImg, String title, String subtitle) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const SizedBox(height: 64,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(urlImg, fit: BoxFit.cover, width: double.infinity,),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const SizedBox(height: 64,),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(urlImg, fit: BoxFit.cover, width: double.infinity,),
+        ),
+        const SizedBox(height: 64,),
+        Text(title, style: const TextStyle(color: Colors.lightBlue, fontSize: 32, fontWeight: FontWeight.bold),),
+        const SizedBox(height: 24,),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Text(
+            subtitle,
+            style: const TextStyle(color: Colors.lightBlue, fontSize: 22),
           ),
-          const SizedBox(height: 64,),
-          Text(title, style: TextStyle(color: Colors.lightBlue, fontSize: 32, fontWeight: FontWeight.bold),),
-          const SizedBox(height: 24,),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text(
-              subtitle,
-              style: const TextStyle(color: Colors.lightBlue, fontSize: 22),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }

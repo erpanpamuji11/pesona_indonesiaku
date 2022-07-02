@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/widgets/fetchUmkm.dart';
@@ -75,7 +76,7 @@ class DetailWisataPage extends StatelessWidget {
           SliverToBoxAdapter(
               child: Container(
             margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20),
                 topLeft: Radius.circular(20)
@@ -86,13 +87,13 @@ class DetailWisataPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(wisata.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    Text(wisata.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                     const SizedBox(
                       height: 10,
                     ),
                     IconName(
                       text: wisata.category,
-                      icon: Icons.local_cafe,
+                      icon: Icons.category_outlined,
                     ),
                     IconName(
                       text: wisata.address,
@@ -100,7 +101,7 @@ class DetailWisataPage extends StatelessWidget {
                     ),
                     IconName(
                         text: wisata.provincy,
-                        icon: Icons.local_activity_outlined),
+                        icon: Icons.location_on_rounded),
                   ],
                 ),
                 Card(
@@ -151,7 +152,7 @@ class DetailWisataPage extends StatelessWidget {
           onTap: () {
             addToWishlist().then((value) => Fluttertoast.showToast(
                 msg: 'Wisata ${wisata.name} Tersimpan',
-                backgroundColor: Colors.lightBlue));
+                backgroundColor: Colors.lightBlue)).then((value) => null);
           },
         ),
       ),

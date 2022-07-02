@@ -63,7 +63,8 @@ Widget fetchWisata(String collectionName) {
                                   child: Hero(
                                     tag: wisata['name'],
                                     child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         child: Image.network(
                                           wisata['imgUrl'],
                                           width: 120.0,
@@ -75,33 +76,35 @@ Widget fetchWisata(String collectionName) {
                                   ),
                                 ),
                                 const SizedBox(width: 10.0),
-                                Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        wisata['name'],
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      const SizedBox(
-                                        height: 5.0,
-                                      ),
-                                      IconInfo(
-                                        text: wisata['category'],
-                                        icon: Icons.location_on_rounded,
-                                      ),
-                                      const SizedBox(
-                                        height: 5.0,
-                                      ),
-                                      IconInfo(
-                                        text: wisata['address'],
-                                        icon: Icons.category_outlined,
-                                      ),
-                                    ],
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          wisata['name'],
+                                          style: const TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        const SizedBox(
+                                          height: 5.0,
+                                        ),
+                                        IconInfo(
+                                          text: wisata['category'],
+                                          icon: Icons.location_on_rounded,
+                                        ),
+                                        const SizedBox(
+                                          height: 5.0,
+                                        ),
+                                        IconInfo(
+                                          text: wisata['address'],
+                                          icon: Icons.category_outlined,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

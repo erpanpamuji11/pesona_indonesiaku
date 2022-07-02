@@ -41,9 +41,9 @@ class _LoginPageState extends State<LoginPage> {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Fluttertoast.showToast(msg: "No user found for that email.");
+        Fluttertoast.showToast(msg: "Email pengguna tidak ditemukan");
       } else if (e.code == 'wrong-password') {
-        Fluttertoast.showToast(msg: "Wrong password provided for that user.");
+        Fluttertoast.showToast(msg: "Kata sandi tidak cocok dengan user tersebut");
       }
     } catch (e) {
       print(e);
