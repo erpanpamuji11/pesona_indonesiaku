@@ -7,21 +7,29 @@ class IconInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
       children: [
-        Icon(
-          icon,
-          size: 16,
-          color: Colors.lightBlue,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              icon,
+              size: 22,
+              color: Colors.lightBlue,
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
         ),
-        const SizedBox(
-          width: 3.0,
-        ),
-        SizedBox(
-          width: 160,
-          child: Text(text),
-        )
+        SizedBox(height: 5)
       ],
     );
   }

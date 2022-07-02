@@ -37,15 +37,21 @@ class DetailWisataPage extends StatelessWidget {
       "category": wisata.category,
       "description": wisata.description,
       "imgUrl": wisata.imgUrl,
-    }).then((value) =>
-            Fluttertoast.showToast(msg: "Data Masuk Wishlist", backgroundColor: Colors.black54));
+    }).then((value) => Fluttertoast.showToast(
+            msg: "Data Masuk Wishlist", backgroundColor: Colors.black54));
   }
 
   Future removeWishlist() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
-    return FirebaseFirestore.instance.collection("wishlist-wisata").doc(currentUser!.email).collection("items").doc(wisata.name).delete().then((value) =>
-        Fluttertoast.showToast(msg: "Data Berhasil di Hapus", backgroundColor: Colors.black54));
+    return FirebaseFirestore.instance
+        .collection("wishlist-wisata")
+        .doc(currentUser!.email)
+        .collection("items")
+        .doc(wisata.name)
+        .delete()
+        .then((value) => Fluttertoast.showToast(
+            msg: "Data Berhasil di Hapus", backgroundColor: Colors.black54));
   }
 
   @override
@@ -94,7 +100,7 @@ class DetailWisataPage extends StatelessWidget {
                     Text(
                       wisata.name,
                       style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 26, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 16,
@@ -108,7 +114,9 @@ class DetailWisataPage extends StatelessWidget {
                       icon: Icons.map_outlined,
                     ),
                     IconInfo(
-                        text: wisata.provincy, icon: Icons.location_on_rounded),
+                      text: wisata.provincy,
+                      icon: Icons.location_on_outlined,
+                    ),
                   ],
                 ),
                 Card(
@@ -145,16 +153,22 @@ class DetailWisataPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             padding: const EdgeInsets.all(10),
             height: 60,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("wishlist-wisata").doc(FirebaseAuth.instance.currentUser!.email).collection("items").doc(wisata.name).snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("wishlist-wisata")
+                    .doc(FirebaseAuth.instance.currentUser!.email)
+                    .collection("items")
+                    .doc(wisata.name)
+                    .snapshots(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData){
+                  if (snapshot.hasData) {
                     return ElevatedButton(
                       style: ButtonStyle(
-                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        padding:
+                            MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -175,8 +189,10 @@ class DetailWisataPage extends StatelessWidget {
                   } else {
                     return ElevatedButton(
                       style: ButtonStyle(
-                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        padding:
+                            MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -195,10 +211,7 @@ class DetailWisataPage extends StatelessWidget {
                       ),
                     );
                   }
-                }
-            )
-
-        ),
+                })),
       ),
     );
   }

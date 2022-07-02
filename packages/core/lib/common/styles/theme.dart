@@ -1,4 +1,3 @@
-import 'package:core/common/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 enum AppTheme { LightTheme, DarkTheme }

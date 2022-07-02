@@ -42,7 +42,6 @@ class Wisata extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props =>
       [name, address, provincy, category, description, imgUrl];
 }

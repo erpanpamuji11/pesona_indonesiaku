@@ -135,36 +135,33 @@ class _SearchPageState extends State<SearchPage> {
                                         ),
                                         const SizedBox(width: 10.0),
                                         Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  data['name'],
-                                                  style: const TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                                const SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                IconInfo(
-                                                  text: data['provincy'],
-                                                  icon:
-                                                      Icons.location_on_rounded,
-                                                ),
-                                                const SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                IconInfo(
-                                                  text: data['category'],
-                                                  icon: Icons.category_outlined,
-                                                ),
-                                              ],
-                                            ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                data['name'],
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              IconInfo(
+                                                text: data['provincy'],
+                                                icon: Icons
+                                                    .location_on_outlined,
+                                              ),
+                                              const SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              IconInfo(
+                                                text: data['category'],
+                                                icon: Icons.category_outlined,
+                                              ),
+                                            ],
                                           ),
                                         )
                                       ],
