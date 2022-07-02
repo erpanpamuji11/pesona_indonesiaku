@@ -63,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const Divider(
                 height: 5,
-                thickness: 5,
+                thickness: 3,
               ),
               const SizedBox(
                 height: 10,
@@ -99,7 +99,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: myButton(() {Navigator.push(context, MaterialPageRoute(builder: (context) => const InputWisataPage()));}, 'Tambah Data Wisata', 'assets/icons/add.svg')),
+                              child: myButton(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const InputWisataPage()));
+                              }, 'Tambah Data Wisata', 'assets/icons/add.svg')),
                         ),
                         const SizedBox(
                           width: 15,
@@ -111,7 +117,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: myButton(() {Navigator.push(context, MaterialPageRoute(builder: (context) => const PickWisata()));}, 'Tambah Data UMKM', 'assets/icons/add.svg')),
+                              child: myButton(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const PickWisata()));
+                              }, 'Tambah Data UMKM', 'assets/icons/add.svg')),
                         ),
                       ],
                     )
@@ -123,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const Divider(
                 height: 5,
-                thickness: 5,
+                thickness: 3,
               ),
               const SizedBox(
                 height: 20,

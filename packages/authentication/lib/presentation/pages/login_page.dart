@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:authentication/presentation/pages/signup_page.dart';
 import 'package:core/presentation/pages/ParentPage.dart';
 import 'package:core/widgets/mytextfield.dart';

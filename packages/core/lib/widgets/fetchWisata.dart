@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfoRegular.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata/presentation/pages/detail_wisata_page.dart';
@@ -48,7 +48,7 @@ Widget fetchWisata(String collectionName) {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          margin: const EdgeInsets.all(10.0),
+                          margin: const EdgeInsets.all(16),
                           child: Material(
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(10.0),
@@ -77,34 +77,31 @@ Widget fetchWisata(String collectionName) {
                                 ),
                                 const SizedBox(width: 10.0),
                                 Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          wisata['name'],
-                                          style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        const SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        IconInfo(
-                                          text: wisata['category'],
-                                          icon: Icons.location_on_rounded,
-                                        ),
-                                        const SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        IconInfo(
-                                          text: wisata['address'],
-                                          icon: Icons.category_outlined,
-                                        ),
-                                      ],
-                                    ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        wisata['name'],
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      IconInfoRegular(
+                                        text: wisata['category'],
+                                        icon: Icons.location_on_outlined,
+                                      ),
+                                      const SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      IconInfoRegular(
+                                        text: wisata['address'],
+                                        icon: Icons.category_outlined,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

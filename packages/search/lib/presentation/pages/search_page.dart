@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/common/styles/colors.dart';
 import 'package:core/data/models/wisata_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfoRegular.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata/presentation/pages/detail_wisata_page.dart';
 
@@ -25,9 +25,9 @@ class _SearchPageState extends State<SearchPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Temukan Wisata dan UMKM Terbaikmu',
+                'Temukan Wisata Pilihanmu dan UMKM Sekitarnya',
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.lightBlue),
               ),
@@ -52,7 +52,7 @@ class _SearchPageState extends State<SearchPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  hintText: "Masukan Wisata Impianmu",
+                  hintText: "Cari Wisata dan UMKM disini...",
                   hintStyle: const TextStyle(fontSize: 14),
                 ),
               ),
@@ -63,7 +63,7 @@ class _SearchPageState extends State<SearchPage> {
                 child: StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection("wisata")
-                        .where("name", isGreaterThanOrEqualTo: inputText)
+                        .where("name", isGreaterThan: inputText)
                         .snapshots(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -119,52 +119,50 @@ class _SearchPageState extends State<SearchPage> {
                                           child: Hero(
                                             tag: data['name'],
                                             child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                                child: Image.network(
-                                                  data['imgUrl'],
-                                                  width: 100.0,
-                                                  height: 100.0,
-                                                  fit: BoxFit.cover,
-                                                  errorBuilder: (context, url,
-                                                          error) =>
-                                                      const Text(
-                                                          'Failed load image'),
-                                                )),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              child: Image.network(
+                                                data['imgUrl'],
+                                                width: 100.0,
+                                                height: 100.0,
+                                                fit: BoxFit.cover,
+                                                errorBuilder: (context, url,
+                                                        error) =>
+                                                    const Text(
+                                                        'Failed load image'),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                         const SizedBox(width: 10.0),
                                         Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  data['name'],
-                                                  style: const TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                                const SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                IconInfo(
-                                                  text: data['provincy'],
-                                                  icon:
-                                                      Icons.location_on_rounded,
-                                                ),
-                                                const SizedBox(
-                                                  height: 5.0,
-                                                ),
-                                                IconInfo(
-                                                  text: data['category'],
-                                                  icon: Icons.category_outlined,
-                                                ),
-                                              ],
-                                            ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                data['name'],
+                                                style: const TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              IconInfoRegular(
+                                                text: data['provincy'],
+                                                icon:
+                                                    Icons.location_on_outlined,
+                                              ),
+                                              const SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              IconInfoRegular(
+                                                text: data['category'],
+                                                icon: Icons.category_outlined,
+                                              ),
+                                            ],
                                           ),
                                         )
                                       ],

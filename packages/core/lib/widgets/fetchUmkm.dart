@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/umkm_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:umkm/presentation/pages/detail_umkm_page.dart';
 
@@ -19,6 +19,7 @@ Widget fetchUmkm(String collectionName, String docName) {
       }
 
       return ListView.builder(
+          physics: ScrollPhysics(),
           itemCount: snapshot.data == null ? 0 : snapshot.data!.docs.length,
           itemBuilder: (_, index) {
             DocumentSnapshot umkm = snapshot.data!.docs[index];
@@ -40,7 +41,7 @@ Widget fetchUmkm(String collectionName, String docName) {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    margin: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.all(16),
                     child: Material(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10.0),

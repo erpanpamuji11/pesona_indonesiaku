@@ -15,59 +15,60 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(top: 5, bottom: 15),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 15),
+              margin: const EdgeInsets.only(left: 16),
               child: const Text(
                 "Kategori Wisata",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 8,
             ),
             SizedBox(
-                height: 65,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    _buildCategory('assets/icons/nature.svg', 'Alam', 'Alam'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    _buildCategory(
-                        'assets/icons/mosque.svg', 'Religi', 'Religi'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    _buildCategory(
-                        'assets/icons/necklace.svg', 'Budaya', 'Budaya'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    _buildCategory(
-                        'assets/icons/soccer.svg', 'Sports', 'Sport'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    _buildCategory(
-                        'assets/icons/learning.svg', 'Edukasi', 'Edukasi'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    _buildCategory(
-                        'assets/icons/sprout.svg', 'Botani', 'Botani'),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                  ],
-                )),
+              height: 75,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  _buildCategory('assets/icons/nature.svg', 'Alam', 'Alam'),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  _buildCategory('assets/icons/mosque.svg', 'Religi', 'Religi'),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  _buildCategory(
+                      'assets/icons/necklace.svg', 'Budaya', 'Budaya'),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  _buildCategory('assets/icons/soccer.svg', 'Sports', 'Sport'),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  _buildCategory(
+                      'assets/icons/learning.svg', 'Edukasi', 'Edukasi'),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  _buildCategory('assets/icons/sprout.svg', 'Botani', 'Botani'),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                ],
+              ),
+            ),
           ],
         ));
   }
@@ -85,10 +86,10 @@ class _CategoriesState extends State<Categories> {
         );
       },
       child: Container(
-        width: 60,
-        padding: const EdgeInsets.all(5.0),
+        width: 75,
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(50),
             color: Colors.lightBlueAccent),
         child: Column(
           children: [
