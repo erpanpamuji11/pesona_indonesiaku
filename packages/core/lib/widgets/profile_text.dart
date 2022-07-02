@@ -41,14 +41,14 @@ Widget profileNameTitle() {
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       var data = snapshot.data;
       if (data == null) {
-        return const Text('Hallo World!', style: TextStyle(color: Colors.white),);
+        return const Text('Hello World!', style: TextStyle(color: Colors.white),);
       }
       return Text(
-        'Hallo ${data['nickName']}!',
+        'Hello ${data['nickName']}!',
         style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w500,
-          fontSize: 17,
+          fontSize: 20,
         ),
       );
     },

@@ -14,8 +14,8 @@ class WisataList extends StatelessWidget {
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 20.0,
-          crossAxisSpacing: 20.0,
+          mainAxisSpacing: 16.0,
+          crossAxisSpacing: 16.0,
           childAspectRatio: 0.75,
         ),
         itemCount: wisata.length,

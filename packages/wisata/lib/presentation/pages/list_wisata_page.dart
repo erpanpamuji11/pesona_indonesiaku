@@ -11,24 +11,26 @@ class ListWisataPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: const Text("Wisata Favoritmu"),
+      appBar: AppBar(
+        title: const Text("Daftar Wisata"),
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(16),
+        child: BlocBuilder<WisataBloc, WisataState>(
+          builder: (context, state) {
+            if (state is WisataLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is WisataLoaded) {
+              return WisataList(wisata: state.wisata.toList());
+            } else {
+              return const Text("Something went wrong");
+            }
+          },
         ),
-        body: Container(
-            margin: const EdgeInsets.all(15),
-            child:
-                BlocBuilder<WisataBloc, WisataState>(builder: (context, state) {
-              if (state is WisataLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is WisataLoaded) {
-                return WisataList(wisata: state.wisata.toList());
-              } else {
-                return const Text("Something went wrong");
-              }
-            })));
+      ),
+    );
   }
 }
 

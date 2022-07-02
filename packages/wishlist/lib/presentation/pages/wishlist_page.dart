@@ -11,7 +11,7 @@ class WishlistPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: const Text('Wishlist'),
+        title: const Text('Daftar Wishlist'),
       ),
       body: SafeArea(child: fetchWisata('wishlist-wisata')),
     );

@@ -70,7 +70,7 @@ class _ParentPageState extends State<ParentPage> {
                 icon: const Icon(Icons.search), title: const Text("Search")),
             SalomonBottomBarItem(
                 icon: const Icon(Icons.favorite_border_outlined),
-                title: const Text("favorite")),
+                title: const Text("Wishlist")),
             SalomonBottomBarItem(
                 icon: const Icon(Icons.person), title: const Text("Profile")),
           ],

@@ -36,18 +36,17 @@ class WisataCard extends StatelessWidget {
               Container(
                 height: 400,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10),
                     color: Colors.white),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Container(
-                        height: 200,
-                        width: double.maxFinite,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.0)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                        ),
                         child: Image.network(
                           wisata.imgUrl,
                           height: double.maxFinite,
@@ -73,30 +72,27 @@ class WisataCard extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 10, bottom: 10, top: 2),
+                      margin: const EdgeInsets.all(5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             wisata.name,
                             style: const TextStyle(
-                                fontSize: 15,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
                           ),
-                          const SizedBox(
-                            height: 4,
-                          ),
+                          SizedBox(height: 5),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const Icon(
-                                Icons.location_on_rounded,
-                                size: 12,
+                                Icons.location_on_sharp,
+                                size: 18,
                                 color: Colors.lightBlue,
                               ),
-                              const SizedBox(
-                                width: 5,
-                              ),
+                              SizedBox(width: 2),
                               Text(
                                 wisata.provincy,
                                 style: const TextStyle(

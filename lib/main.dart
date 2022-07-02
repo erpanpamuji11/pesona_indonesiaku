@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:authentication/presentation/pages/signup_page.dart';
 import 'package:core/data/models/umkm_model.dart';

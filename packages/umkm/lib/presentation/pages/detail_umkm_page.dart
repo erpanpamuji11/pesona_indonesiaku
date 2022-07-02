@@ -1,4 +1,5 @@
 import 'package:core/data/models/umkm_model.dart';
+import 'package:core/widgets/myicon.dart';
 import 'package:flutter/material.dart';
 
 class DetailUmkmPage extends StatelessWidget {
@@ -57,15 +58,22 @@ class DetailUmkmPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(umkm.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    Text(
+                      umkm.name,
+                      style:
+                          const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
-                    IconName(
+                    IconInfo(
                       text: umkm.category,
-                      icon: Icons.local_cafe,
+                      icon: Icons.category_outlined,
                     ),
-                    IconName(
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    IconInfo(
                       text: umkm.address,
                       icon: Icons.pin_drop_outlined,
                     ),
@@ -89,33 +97,6 @@ class DetailUmkmPage extends StatelessWidget {
           ))
         ],
       ),
-    );
-  }
-}
-
-class IconName extends StatelessWidget {
-  final String text;
-  final IconData? icon;
-  const IconName({Key? key, required this.text, this.icon}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Icon(
-          icon,
-          size: 22,
-          color: Colors.lightBlue,
-        ),
-        const SizedBox(width: 5),
-        SizedBox(
-          width: 290,
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
     );
   }
 }

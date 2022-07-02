@@ -25,7 +25,7 @@ class _SearchPageState extends State<SearchPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Temukan Wisata dan UMKM Terbaikmu',
+                'Temukan Wisata Pilihanmu dan UMKM Sekitarnya',
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class _SearchPageState extends State<SearchPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  hintText: "Masukan Wisata Impianmu",
+                  hintText: "Cari Wisata dan UMKM disini...",
                   hintStyle: const TextStyle(fontSize: 14),
                 ),
               ),
@@ -63,7 +63,7 @@ class _SearchPageState extends State<SearchPage> {
                 child: StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection("wisata")
-                        .where("name", isGreaterThanOrEqualTo: inputText)
+                        .where("name", isGreaterThan: inputText)
                         .snapshots(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
