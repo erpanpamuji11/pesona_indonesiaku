@@ -139,7 +139,7 @@ class DetailWisataPage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             padding: const EdgeInsets.all(10),
             height: 60,
             decoration: BoxDecoration(
@@ -149,11 +149,19 @@ class DetailWisataPage extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (snapshot.hasData){
                     return ElevatedButton(
-                      style: ButtonStyle(),
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        elevation: MaterialStateProperty.all(0.3),
+                      ),
                       onPressed: () async {
                         addToWishlist();
                       },
-                      child: const Text(
+                      child: Text(
                         'Tambah Ke Whislist',
                         style: TextStyle(
                             fontSize: 20,
@@ -163,6 +171,15 @@ class DetailWisataPage extends StatelessWidget {
                     );
                   } else {
                     return ElevatedButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        elevation: MaterialStateProperty.all(0.3),
+                      ),
                       onPressed: () async {
                         removeWishlist();
                       },
