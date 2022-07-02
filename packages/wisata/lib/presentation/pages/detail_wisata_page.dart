@@ -1,7 +1,7 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/widgets/fetchUmkm.dart';
+import 'package:core/widgets/myicon.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -29,7 +29,7 @@ class DetailWisataPage extends StatelessWidget {
     return _collectionRef
         .doc(currentUser!.email)
         .collection("items")
-        .doc()
+        .doc(wisata.name)
         .set({
       "name": wisata.name,
       "address": wisata.address,
@@ -38,7 +38,14 @@ class DetailWisataPage extends StatelessWidget {
       "description": wisata.description,
       "imgUrl": wisata.imgUrl,
     }).then((value) =>
-            const SnackBar(content: Text('Wisata Berhasil Masuk ke Wishlist')));
+            Fluttertoast.showToast(msg: "Data Masuk Wishlist", backgroundColor: Colors.black54));
+  }
+
+  Future removeWishlist() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+    return FirebaseFirestore.instance.collection("wishlist-wisata").doc(currentUser!.email).collection("items").doc(wisata.name).delete().then((value) =>
+        Fluttertoast.showToast(msg: "Data Berhasil di Hapus", backgroundColor: Colors.black54));
   }
 
   @override
@@ -77,31 +84,32 @@ class DetailWisataPage extends StatelessWidget {
               child: Container(
             margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(20)
-              )
-            ),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20))),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   children: [
-                    Text(wisata.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    Text(
+                      wisata.name,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
-                    IconName(
+                    IconInfo(
                       text: wisata.category,
                       icon: Icons.category_outlined,
                     ),
-                    IconName(
+                    IconInfo(
                       text: wisata.address,
                       icon: Icons.pin_drop_outlined,
                     ),
-                    IconName(
-                        text: wisata.provincy,
-                        icon: Icons.location_on_rounded),
+                    IconInfo(
+                        text: wisata.provincy, icon: Icons.location_on_rounded),
                   ],
                 ),
                 Card(
@@ -130,59 +138,48 @@ class DetailWisataPage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: GestureDetector(
-          child: InkWell(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              padding: const EdgeInsets.all(10),
-              height: 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.lightBlue),
-              child: const Center(
-                  child: Text(
-                'Tambah Ke Whislist',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              )),
-            ),
-          ),
-          onTap: () {
-            addToWishlist().then((value) => Fluttertoast.showToast(
-                msg: 'Wisata ${wisata.name} Tersimpan',
-                backgroundColor: Colors.lightBlue)).then((value) => null);
-          },
+        child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.all(10),
+            height: 60,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20)),
+            child: StreamBuilder(
+                stream: FirebaseFirestore.instance.collection("wishlist-wisata").doc(FirebaseAuth.instance.currentUser!.email).collection("items").doc(wisata.name).snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData){
+                    return ElevatedButton(
+                      style: ButtonStyle(),
+                      onPressed: () async {
+                        addToWishlist();
+                      },
+                      child: const Text(
+                        'Tambah Ke Whislist',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    );
+                  } else {
+                    return ElevatedButton(
+                      onPressed: () async {
+                        removeWishlist();
+                      },
+                      child: const Text(
+                        'Hapus Ke Whislist',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    );
+                  }
+                }
+            )
+
         ),
       ),
-    );
-  }
-}
-
-class IconName extends StatelessWidget {
-  final String text;
-  final IconData? icon;
-  const IconName({Key? key, required this.text, this.icon}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Icon(
-          icon,
-          size: 22,
-          color: Colors.lightBlue,
-        ),
-        const SizedBox(width: 5),
-        SizedBox(
-          width: 290,
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
     );
   }
 }

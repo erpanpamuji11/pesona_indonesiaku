@@ -1,4 +1,3 @@
-import 'package:authentication/presentation/pages/login_page.dart';
 import 'package:core/presentation/pages/akun/edit_profile_page.dart';
 import 'package:core/presentation/pages/akun/settings_page.dart';
 import 'package:core/presentation/pages/akun/widgets/menu_profile_button.dart';
@@ -100,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: myButton(() {Navigator.pushNamed(context, InputWisataPage.routeName);}, 'Tambah Data Wisata', 'assets/icons/add.svg')),
+                              child: myButton(() {Navigator.push(context, MaterialPageRoute(builder: (context) => const InputWisataPage()));}, 'Tambah Data Wisata', 'assets/icons/add.svg')),
                         ),
                         const SizedBox(
                           width: 15,
@@ -110,10 +109,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 50,
                               width: 100,
                               decoration: BoxDecoration(
-                                color: Colors.lightGreen,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: myButton(() {Navigator.push(context, MaterialPageRoute(builder: (context) => PickWisata()));}, 'Tambah Data UMKM', 'assets/icons/add.svg')),
+                              child: myButton(() {Navigator.push(context, MaterialPageRoute(builder: (context) => const PickWisata()));}, 'Tambah Data UMKM', 'assets/icons/add.svg')),
                         ),
                       ],
                     )
