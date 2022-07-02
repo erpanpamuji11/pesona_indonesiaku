@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfoRegular.dart';
 import 'package:core/widgets/mytextfield.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +119,7 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Input UMKM'),
+        title: const Text('Input UMKM',),
       ),
       body: SingleChildScrollView(
         child: _isLoading
@@ -191,14 +191,14 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
                                             const SizedBox(
                                               height: 5.0,
                                             ),
-                                            IconInfo(
+                                            IconInfoRegular(
                                               text: widget.wisata.provincy,
-                                              icon: Icons.location_on_rounded,
+                                              icon: Icons.location_on_outlined,
                                             ),
                                             const SizedBox(
                                               height: 5.0,
                                             ),
-                                            IconInfo(
+                                            IconInfoRegular(
                                               text: widget.wisata.category,
                                               icon: Icons.category_outlined,
                                             ),

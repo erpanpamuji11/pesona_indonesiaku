@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfoRegular.dart';
 import 'package:flutter/material.dart';
 import 'package:umkm/presentation/pages/input_umkm.dart';
 
@@ -18,6 +18,7 @@ class _PickWisataState extends State<PickWisata> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Input UMKM'),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
@@ -34,9 +35,9 @@ class _PickWisataState extends State<PickWisata> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Pilih Wisata Mana UMKM-mu berada',
+              'Pilih Lokasi UMKM-mu',
               style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.lightBlue),
             ),
@@ -61,7 +62,7 @@ class _PickWisataState extends State<PickWisata> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                hintText: "Masukan Wisata Impianmu",
+                hintText: "Cari Wisata disini...",
                 hintStyle: const TextStyle(fontSize: 14),
               ),
             ),
@@ -160,14 +161,14 @@ class _PickWisataState extends State<PickWisata> {
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              IconInfo(
+                                              IconInfoRegular(
                                                 text: data['provincy'],
-                                                icon: Icons.location_on_rounded,
+                                                icon: Icons.location_on_outlined,
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              IconInfo(
+                                              IconInfoRegular(
                                                 text: data['category'],
                                                 icon: Icons.category_outlined,
                                               ),

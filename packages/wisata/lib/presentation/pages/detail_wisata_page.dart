@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/wisata_model.dart';
 import 'package:core/widgets/fetchUmkm.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -99,8 +99,11 @@ class DetailWisataPage extends StatelessWidget {
                   children: [
                     Text(
                       wisata.name,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
-                          fontSize: 26, fontWeight: FontWeight.bold),
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -152,7 +155,7 @@ class DetailWisataPage extends StatelessWidget {
         child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             padding: const EdgeInsets.all(10),
-            height: 60,
+            height: 70,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             child: StreamBuilder(
                 stream: FirebaseFirestore.instance
@@ -179,7 +182,7 @@ class DetailWisataPage extends StatelessWidget {
                         addToWishlist();
                       },
                       child: Text(
-                        'Tambah Ke Whislist',
+                        'Tambah Ke Wishlist',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -203,7 +206,7 @@ class DetailWisataPage extends StatelessWidget {
                         removeWishlist();
                       },
                       child: const Text(
-                        'Hapus Ke Whislist',
+                        'Hapus Ke Wishlist',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

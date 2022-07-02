@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/data/models/umkm_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:umkm/presentation/pages/detail_umkm_page.dart';
 

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/common/styles/colors.dart';
 import 'package:core/data/models/wisata_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfoRegular.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata/presentation/pages/detail_wisata_page.dart';
 
@@ -27,7 +27,7 @@ class _SearchPageState extends State<SearchPage> {
               const Text(
                 'Temukan Wisata Pilihanmu dan UMKM Sekitarnya',
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.lightBlue),
               ),
@@ -119,18 +119,19 @@ class _SearchPageState extends State<SearchPage> {
                                           child: Hero(
                                             tag: data['name'],
                                             child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                                child: Image.network(
-                                                  data['imgUrl'],
-                                                  width: 100.0,
-                                                  height: 100.0,
-                                                  fit: BoxFit.cover,
-                                                  errorBuilder: (context, url,
-                                                          error) =>
-                                                      const Text(
-                                                          'Failed load image'),
-                                                )),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              child: Image.network(
+                                                data['imgUrl'],
+                                                width: 100.0,
+                                                height: 100.0,
+                                                fit: BoxFit.cover,
+                                                errorBuilder: (context, url,
+                                                        error) =>
+                                                    const Text(
+                                                        'Failed load image'),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                         const SizedBox(width: 10.0),
@@ -142,22 +143,22 @@ class _SearchPageState extends State<SearchPage> {
                                               Text(
                                                 data['name'],
                                                 style: const TextStyle(
-                                                    fontSize: 20,
+                                                    fontSize: 17,
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                              IconInfo(
+                                              IconInfoRegular(
                                                 text: data['provincy'],
-                                                icon: Icons
-                                                    .location_on_outlined,
+                                                icon:
+                                                    Icons.location_on_outlined,
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              IconInfo(
+                                              IconInfoRegular(
                                                 text: data['category'],
                                                 icon: Icons.category_outlined,
                                               ),

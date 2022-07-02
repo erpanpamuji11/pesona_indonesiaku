@@ -1,5 +1,5 @@
 import 'package:core/data/models/umkm_model.dart';
-import 'package:core/widgets/myicon.dart';
+import 'package:core/widgets/iconInfoRegular.dart';
 import 'package:flutter/material.dart';
 
 class DetailUmkmPage extends StatelessWidget {
@@ -66,16 +66,16 @@ class DetailUmkmPage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    IconInfo(
+                    IconInfoRegular(
                       text: umkm.category,
                       icon: Icons.category_outlined,
                     ),
                     const SizedBox(
                       height: 4,
                     ),
-                    IconInfo(
+                    IconInfoRegular(
                       text: umkm.address,
-                      icon: Icons.pin_drop_outlined,
+                      icon: Icons.map_outlined,
                     ),
                   ],
                 ),
