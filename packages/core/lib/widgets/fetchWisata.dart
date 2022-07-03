@@ -75,7 +75,7 @@ Widget fetchWisata(String collectionName) {
                                         )),
                                   ),
                                 ),
-                                const SizedBox(width: 10.0),
+                                const SizedBox(width: 10),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -91,14 +91,14 @@ Widget fetchWisata(String collectionName) {
                                         height: 5.0,
                                       ),
                                       IconInfoRegular(
-                                        text: wisata['category'],
-                                        icon: Icons.location_on_outlined,
+                                        text: wisata['address'],
+                                        icon: Icons.map_outlined,
                                       ),
                                       const SizedBox(
                                         height: 5.0,
                                       ),
                                       IconInfoRegular(
-                                        text: wisata['address'],
+                                        text: wisata['category'],
                                         icon: Icons.category_outlined,
                                       ),
                                     ],

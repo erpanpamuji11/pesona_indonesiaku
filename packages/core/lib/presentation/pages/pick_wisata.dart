@@ -82,7 +82,6 @@ class _PickWisataState extends State<PickWisata> {
                         child: Text("Something went wrong"),
                       );
                     }
-
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
                         child: Text("Loading"),
@@ -163,7 +162,8 @@ class _PickWisataState extends State<PickWisata> {
                                               ),
                                               IconInfoRegular(
                                                 text: data['provincy'],
-                                                icon: Icons.location_on_outlined,
+                                                icon:
+                                                    Icons.location_on_outlined,
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
