@@ -176,8 +176,7 @@ class _InputUmkmPageState extends State<InputUmkmPage> {
                                         ),
                                       ),
                                       const SizedBox(width: 10.0),
-                                      Padding(
-                                        padding: const EdgeInsets.all(4.0),
+                                      Expanded(
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
