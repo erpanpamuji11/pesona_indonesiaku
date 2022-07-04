@@ -47,6 +47,9 @@ class DetailUmkmPage extends StatelessWidget {
                 umkm.imgUrl,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
+                errorBuilder: (context, url, error) => Center(
+                  child: Text('Failed to Load this Image'),
+                ),
               ),
             ),
           ),
@@ -60,8 +63,8 @@ class DetailUmkmPage extends StatelessWidget {
                   children: [
                     Text(
                       umkm.name,
-                      style:
-                          const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
