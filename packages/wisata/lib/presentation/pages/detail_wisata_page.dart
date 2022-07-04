@@ -81,6 +81,9 @@ class DetailWisataPage extends StatelessWidget {
                 child: Image.network(
                   wisata.imgUrl,
                   fit: BoxFit.fill,
+                  errorBuilder: (context, url, error) => Center(
+                    child: Text('Failed to Load this Image'),
+                  ),
                 ),
               ),
             ),

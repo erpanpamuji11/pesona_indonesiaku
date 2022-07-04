@@ -129,7 +129,7 @@ class _SearchPageState extends State<SearchPage> {
                                                 errorBuilder: (context, url,
                                                         error) =>
                                                     const Text(
-                                                        'Failed load image'),
+                                                        'Failed to Load this Image'),
                                               ),
                                             ),
                                           ),

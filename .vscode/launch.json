@@ -1,0 +1,145 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "pesona_indonesiaku",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "pesona_indonesiaku (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "pesona_indonesiaku (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "authentication",
+            "cwd": "packages\\authentication",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "authentication (profile mode)",
+            "cwd": "packages\\authentication",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "authentication (release mode)",
+            "cwd": "packages\\authentication",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "core",
+            "cwd": "packages\\core",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "core (profile mode)",
+            "cwd": "packages\\core",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "core (release mode)",
+            "cwd": "packages\\core",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "search",
+            "cwd": "packages\\search",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "search (profile mode)",
+            "cwd": "packages\\search",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "search (release mode)",
+            "cwd": "packages\\search",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "umkm",
+            "cwd": "packages\\umkm",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "umkm (profile mode)",
+            "cwd": "packages\\umkm",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "umkm (release mode)",
+            "cwd": "packages\\umkm",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "wisata",
+            "cwd": "packages\\wisata",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "wisata (profile mode)",
+            "cwd": "packages\\wisata",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "wisata (release mode)",
+            "cwd": "packages\\wisata",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "wishlist",
+            "cwd": "packages\\wishlist",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "wishlist (profile mode)",
+            "cwd": "packages\\wishlist",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "wishlist (release mode)",
+            "cwd": "packages\\wishlist",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

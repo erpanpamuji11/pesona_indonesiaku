@@ -53,6 +53,9 @@ class WisataCard extends StatelessWidget {
                           width: double.maxFinite,
                           fit: BoxFit.fitHeight,
                           scale: 1.0,
+                          errorBuilder: (context, url, error) => Center(
+                            child: Text('Failed to Load this Image'),
+                          ),
                           loadingBuilder: (context, child, loadingProgress) {
                             if (loadingProgress == null) {
                               return child;
